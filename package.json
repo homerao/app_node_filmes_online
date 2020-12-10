@@ -1,0 +1,36 @@
+{
+  "name": "filmes_mongo",
+  "version": "1.0.0",
+  "description": "app de filmes com mongo db node js",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/homerao/app_node_filmes_online.git"
+  },
+  "keywords": [
+    "node",
+    "filmes",
+    "express",
+    "handlebars"
+  ],
+  "author": "Homero Tiago",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/homerao/app_node_filmes_online/issues"
+  },
+  "homepage": "https://github.com/homerao/app_node_filmes_online#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "express-handlebars": "^5.2.0",
+    "express-session": "^1.17.1",
+    "flash": "^1.1.0",
+    "mongoose": "^5.11.6",
+    "mysql": "^2.18.1",
+    "sequelize": "^6.3.5",
+    "sequelize-cli": "^6.2.0"
+  }
+}
