@@ -8,8 +8,6 @@ const app = express()
 
 const port = 3000
 app.use(helmet())
-app.use(bodyParser.urlencoded({extended: false}))
-app.use(bodyParser.json())
 app.engine('hbs', handlebars({defaultLayout:'main'}))
 app.set('view engine', 'handlebars')
 app.use('/', apiIndex)
