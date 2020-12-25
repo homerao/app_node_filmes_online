@@ -1,13 +1,18 @@
 const service =  require('../services/ActorService')
 
 class ActorController  {
-    save(req, res)  {
+    async save(req, res)  {
      
    
-       
-    service.save(req)
+    let actor = req.body   
+    service.save(actor).then((data)=>{
+        res.send(data)
+    }).catch((err)=>{
+        console.log("Erro "+ err)
+        res.send("Erro " +err)
+    })
      
-    res.send("ator salvo com sucesso")
+   
     }
     async update(req, res) {
        let  actor = req.body

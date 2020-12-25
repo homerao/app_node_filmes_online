@@ -7,7 +7,7 @@ class ActorRepository  {
   
   async save (actor) {
   
-  let saved = await model.create({first_name: actor.first_name, last_name:actor.last_name})
+  let saved = await Model.create(actor)
     return saved
   }
   async update(actor) {

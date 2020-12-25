@@ -2,7 +2,7 @@
 const config = require('../config/config.json')
 const {DataTypes, Model} = require('sequelize')
 const Sequelize = require('sequelize');
-const sequelize = new Sequelize('sakila', 'root', '12345', { host:'localhost', dialect:'mysql'});
+const sequelize = require('../database/mysql')
 class Actor extends Model {}
 Actor.init( {
     actor_id: {
