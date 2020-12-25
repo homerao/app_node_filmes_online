@@ -3,25 +3,25 @@ const Model = require('../../models/film_category')
 
 class FilmCategoryRepository {
   async save(filmCategory){
-    let saved = Model.create(filmCategory)
+    let saved = await Model.create(filmCategory)
     return saved
   }
   async update(filmCategory){
-  let updated = Model.update(filmCategory, {where:{film_id: filmCategory.film_id}})
+  let updated = await Model.update(filmCategory, {where:{film_id: filmCategory.film_id}})
   return updated
   }
   async findOneById(id){
-  let found = Model.findOne({where:{film_id:id}})
+  let found = await Model.findOne({where:{film_id:id}})
   return found
   } 
 
   async findAll(limit, offset){
-  let customers  = Model.findAll(limit, offset)
+  let customers  = await Model.findAll(limit, offset)
   return customers
   }
 
   async count(){
-  return Model.count()
+  return await Model.count()
   }
 
 }

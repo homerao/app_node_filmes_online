@@ -1,7 +1,6 @@
 const {DataTypes, Sequelize, Op} = require('sequelize');
 const category = require('../../models/category');
 const Model = category
-const endpoint = "http://localhost:3000/api/index/v1/category/"
 class CategoryRepository {
   async save(category){
    let created = await Model.create(category)

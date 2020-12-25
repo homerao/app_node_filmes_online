@@ -16,8 +16,8 @@ class StoreRepository {
   }
 
   async findAll(limit, offset){
-  let customers  = await Model.findAll(limit, offset)
-  return customers
+  let stores  = await Model.findAll(limit, offset)
+  return stores
   }
 
   async count(){

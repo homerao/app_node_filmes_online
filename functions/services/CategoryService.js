@@ -13,6 +13,7 @@ class CategoryService {
 
       async findOneById(id){
       let found = await repository.findOneById(id)
+      return found
       }
 
       async findOneByName(name){
@@ -24,6 +25,10 @@ class CategoryService {
       let found = await repository.findAll(limit, offset)
       return found
       }
+
+      async count(){
+            return await repository.count()
+        }
 }
 
 module.exports = new CategoryService()

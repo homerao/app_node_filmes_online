@@ -42,12 +42,12 @@ class FilmRepository {
  }
 
   async findAll(limit, offset){
-  let customers  = Model.findAll(limit, offset)
+  let customers  = await Model.findAll(limit, offset)
   return customers
   }
 
   async count(){
-  return Model.count()
+  return await Model.count()
   }
 
 }

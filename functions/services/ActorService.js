@@ -4,19 +4,13 @@ const actorRepository = require('../repositories/sqlRepositories/actorRepository
 let a
 
 class ActorService  {
-    async save(req) {
-        a = {first_name:req.body.first_name, last_name:req.body.last_name}
-        console.log(req.body)
-        console.log(a)
-    await actorRepository.save(a)
-    return true
+    async save(actor) {
+    let saved = await actorRepository.save(actor)
+    return saved
     }
     async update (actor)  {
-      await actorRepository.update(actor).then((data)=>{
-          console.log("atualizado " + data)
-      }).catch((err)=>{
-          console.log("Erro ao atualizar " + err)
-      })
+    let updated =  await actorRepository.update(actor)
+    return updated
     }
 
     async findById(id){
