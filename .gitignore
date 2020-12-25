@@ -1,7 +1,7 @@
 node_modules/
 .env
-./functions/database/*
-./functions/config/*
+database/
+config/
 .environment
 .firebaserc
 firebase.json
