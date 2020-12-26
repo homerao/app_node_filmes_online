@@ -15,7 +15,7 @@ app.set('view engine', 'handlebars')
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
 app.use(morgan())
-app.use(cors())
+
 app.use(helmet())
 app.use('/', apiIndex)
 
