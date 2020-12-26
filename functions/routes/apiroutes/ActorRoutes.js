@@ -1,5 +1,6 @@
 const routes = require('express').Router()
 const actorController = require('../../controllers/ActorController')
+
 routes.put('/', (req, res) =>{
     actorController.save(req,res)
 } )

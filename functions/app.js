@@ -11,9 +11,9 @@ const app = express()
 const port = 3000
 app.engine('hbs', handlebars({defaultLayout:'main'}))
 app.set('view engine', 'handlebars')
-app.use(bodyParser.urlencoded({extended: false}))
+app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
-app.use(morgan())
+app.use(morgan("common"))
 
 app.use(helmet())
 app.use('/', apiIndex)
@@ -21,6 +21,8 @@ app.use('/', apiIndex)
 app.listen(process.env.PORT, ()=>{
     console.log("Servidor iniciado")
 })
+
+//module.exports.app = firebase.https.onRequest(app)
 
 
 
