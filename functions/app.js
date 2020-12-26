@@ -4,6 +4,7 @@ const bodyParser = require('body-parser')
 const handlebars = require('express-handlebars')
 const apiIndex = require('./routes/apiroutes/ApiIndexRoutes')
 const helmet = require('helmet')
+const firebase = require('firebase-functions')
 const app = express()
 
 const port = 3000
@@ -16,10 +17,8 @@ app.use('/', apiIndex)
 
 
 
+module.exports.webapp = firebase.https.onRequest(app)
 
-app.listen(port, function (){
-    console.log("Servidor iniciado na porta")
-})
 
 
 
