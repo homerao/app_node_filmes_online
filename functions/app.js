@@ -1,7 +1,6 @@
 const express = require('express')
 const handlebars = require('express-handlebars')
 const apiIndex = require('./routes/apiroutes/ApiIndexRoutes')
-const firebase = require('firebase-functions')
 const helmet = require('helmet')
 const morgan = require('morgan')
 const cors = require('cors')
