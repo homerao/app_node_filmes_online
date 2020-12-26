@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const { Model, DataTypes} = require('sequelize')
 const database = require('../database/mysql')
-const sequelize = new Sequelize('sakila', 'root', '12345', { host:'localhost', dialect:'mysql'})
+const sequelize = database
 class Address extends Model {}
 Address.init(
   {

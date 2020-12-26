@@ -1,7 +1,8 @@
 
 const {DataTypes, Model} = require('sequelize')
 const Sequelize = require('sequelize');
-const sequelize = require('../database/mysql')
+const database = require('../database/mysql')
+const sequelize = database
 class Actor extends Model {}
 Actor.init( {
     actor_id: {
