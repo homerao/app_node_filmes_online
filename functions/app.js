@@ -1,6 +1,7 @@
 const express = require('express')
 const handlebars = require('express-handlebars')
 const apiIndex = require('./routes/apiroutes/ApiIndexRoutes')
+const firebase = require('firebase-admin')
 const helmet = require('helmet')
 const morgan = require('morgan')
 const cors = require('cors')
@@ -21,7 +22,7 @@ app.use('/', apiIndex)
     console.log("Servidor iniciado")
 }) 
 
-//module.exports.app = firebase.https.onRequest(app)
+module.exports.app = firebase.https.onRequest(app)
 
 
 
