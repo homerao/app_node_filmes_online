@@ -1,5 +1,5 @@
 const apiIndexRouter = require('express').Router()
-const apiActorRoutes = require('./actorRoutes')
+const apiActorRoutes = require('./ActorRoutes')
 const apiAddressRoutes = require('./AddressRoutes')
 const CategoryRouter = require('./CategoryRoutes')
 
