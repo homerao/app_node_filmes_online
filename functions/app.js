@@ -19,7 +19,9 @@ app.use(cors())
 app.use(helmet())
 app.use('/', apiIndex)
 
-
+app.listen(process.env.PORT, ()=>{
+    console.log("Servidor iniciado")
+})
 
 
 
