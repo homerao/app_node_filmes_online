@@ -1,5 +1,4 @@
 
-const config = require('../config/config.json')
 const {DataTypes, Model} = require('sequelize')
 const Sequelize = require('sequelize');
 const sequelize = require('../database/mysql')

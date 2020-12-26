@@ -2,8 +2,8 @@ const repository = require('../repositories/sqlRepositories/customerRepository')
 
 class CustomerService {
       async save(customer){
-       let customer = await repository.save(customer)
-       return customer
+       let saved = await repository.save(customer)
+       return saved
       }
 
       async update(customer){

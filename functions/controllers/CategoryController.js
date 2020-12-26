@@ -32,8 +32,8 @@ class CategoryController {
 
     async findAll(req, res){
       let limit, offset
-      limit = req.body.limit
-      offset = req.body.offset
+      limit = req.params.limit
+      offset = req.params.offset
       service.findAll(limit, offset).then((data)=>{
         return res.send(data)
        }).catch((err)=>{
