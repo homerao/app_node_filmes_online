@@ -1,7 +1,6 @@
-
 const actorRepository = require('../repositories/sqlRepositories/actorRepository');
 
-let a
+
 
 class ActorService  {
     async save(actor) {
@@ -20,28 +19,16 @@ class ActorService  {
 
     async findByFirstName(name){
     let actor = await actorRepository.findByFirstName(name)
-    if(actor == null){
-       return -1
-    } else {
-        return actor
-    }
+    return actor
     }
 
     async findByLastName(name){
         let actor = await actorRepository.findByLastName(name)
-        if(actor == null){
-           return -1
-        } else {
-            return actor
-        }
+        return actor
     }
     async findAll(){
         let actors = await actorRepository.findAll()
-        if(actors == null){
-           return new Error("erro no find all")
-        } else {
-            return actors
-        }
+       return actors
     }
 
     async count(){
@@ -50,4 +37,4 @@ class ActorService  {
     }
 }
 
-module.exports = new ActorService
+module.exports = new ActorService()

@@ -1,4 +1,4 @@
-const { Store } = require('express-session');
+
 const {Sequelize, Model, DataTypes} = require('sequelize');
 const sequelize = require('../database/mysql')
 class Store extends Model{}

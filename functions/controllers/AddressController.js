@@ -1,12 +1,12 @@
-const { Model } = require('mongoose')
+
 const service = require('../services/addressService')
 
 
 class ActorController {
     async save(req, res) {
         let address = req.body
-        await service.save(address).then((data)=>{
-        console.log(data)
+        service.save(address).then((data)=>{
+        return res.send(data)
         }).catch((err)=>{
          console.log('Erro ao tentar salvar o endereço ' + err)
         })
@@ -14,15 +14,15 @@ class ActorController {
 
     async update(req, res){
         let updatedData = req.body
-        await service.update(updatedData).then((result)=>{
-       return res.send(result)
+        service.update(updatedData).then((data)=>{
+           return res.send(data)
         }).catch((err)=>{
-           console.log("Erro, não foi possível atualizar o endereço "+ updatedData)
+           return res.send("erro "+err)
         })
 
     }
     async findOneById(id){
-        await  service.findOneById(id).then((data)=>{
+        service.findOneById(id).then((data)=>{
          return res.send(data)
         }).catch((err)=>{
           console.log("Erro, não foi possível encontrar um endereço com esse id "+id+ " msg: "+ err)
@@ -30,14 +30,14 @@ class ActorController {
     }
 
     async findAll(req, res){
-    await service.findAll().then((data)=>{
+    service.findAll().then((data)=>{
         return res.send(data)
     }).catch((err)=>{
         return res.send("Erro " +err)
     })
     }
     async findAllByCity(req, res){
-    await service.findAllByCity(req.params.city).then((data)=>{
+    service.findAllByCity(req.params.city).then((data)=>{
         return res.send(data)
     }).catch((err)=>{
         return res.send("Erro " +err)
@@ -46,12 +46,12 @@ class ActorController {
     }
 
     async count(req, res){
-    await service.count().then((data)=>{
-        return res.json(data)
+    service.count().then((data)=>{
+        return res.send(data)
     }).catch((err)=>{
-        res.json("Não foi possível contar as entidades")
+        res.send("Não foi possível contar as entidades"+ err)
     })
     }
 }
 
-module.exports = new ActorController
+module.exports = new ActorController()

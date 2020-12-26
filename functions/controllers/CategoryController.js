@@ -7,7 +7,7 @@ class CategoryController {
       service.save(category).then((data)=>{
        return res.send(data)
       }).catch((err)=>{
-         console.log("Erro, não foi possível cadastrar a categoria "+ category)
+         console.log("Erro, não foi possível cadastrar a categoria "+ err)
       })
     }
 
