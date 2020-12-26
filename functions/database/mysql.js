@@ -1,6 +1,4 @@
 const Sequelize = require('sequelize')
-const firebase = require('firebase-admin')
-firebase.initializeApp()
 const proc = require('process')
 
   
