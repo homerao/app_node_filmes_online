@@ -1,5 +1,5 @@
 
-const service = require('../services/addressService')
+const service = require('../services/AddressService')
 
 
 class ActorController {
