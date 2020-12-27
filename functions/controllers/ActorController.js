@@ -20,7 +20,7 @@ class ActorController  {
     })
        
     }
-    findById(req, res){
+    async findById(req, res){
     service.findById(req.params.actor_id).then((data)=>{
        return  res.send(data)
      
