@@ -1,21 +1,24 @@
+// requires necessários
 const express = require('express')
 const handlebars = require('express-handlebars')
 const apiIndex = require('./routes/apiroutes/ApiIndexRoutes')
-const firebase = require('firebase-admin')
 const helmet = require('helmet')
 const morgan = require('morgan')
 const cors = require('cors')
 const bodyParser = require('body-parser')
 const app = express()
 const webRoutes = require('./routes/webroutes/userWebRoutes')
-const port = 3000
-app.engine('hbs', handlebars({defaultLayout:'main'}))
+// setando o handlebars
+app.engine('handlebars', handlebars({defaultLayout:'main'}))
 app.set('view engine', 'handlebars')
+// setando o body parser
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
+// setando o morgan
 app.use(morgan("common"))
-
+// setando o helmet
 app.use(helmet())
+// setando as rotas da aplicação web
 app.use('/', webRoutes)
 app.use('/api', apiIndex)
 
