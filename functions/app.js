@@ -17,7 +17,7 @@ app.set('views', __dirname + '/views');
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
 app.use(express.static(path.join(__dirname,'/public')));
-console.log(__dirname + " " + path.join(__dirname,'functions/public'))
+console.log(__dirname + " " + path.join(__dirname,'/public'))
 // setando o morgan
 app.use(morgan("common"))
 // setando o helmet
@@ -27,7 +27,7 @@ app.use('/', webRoutes)
 app.use('/api', apiIndex)
 
  app.listen(process.env.PORT, ()=>{
-    console.log("Servidor iniciado " + __dirname + " " + path.join(__dirname,'functions/public'))
+    console.log("Servidor iniciado " + __dirname + " " + path.join(__dirname,'/public'))
 }) 
 
 //module.exports.app = firebase.https.onRequest(app)
