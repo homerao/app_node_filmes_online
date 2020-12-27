@@ -10,7 +10,7 @@ const bodyParser = require('body-parser')
 const app = express()
 const webRoutes = require('./routes/webroutes/userWebRoutes')
 // setando o handlebars
-app.engine('hbs', handlebars({defaultLayout:'main', extname:'hbs', layoutsDir:__dirname+'/views/layouts',partialsDir:'/partials'}))
+app.engine('hbs', handlebars({defaultLayout:'main', extname:'hbs', layoutsDir:__dirname+'/views/layouts',partialsDir:__dirname+'/views/layouts/partials'}))
 app.set('view engine', 'handlebars')
 app.set('views', __dirname + '/views');
 // setando o body parser
