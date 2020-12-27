@@ -22,7 +22,7 @@ app.use('/', apiIndex)
     console.log("Servidor iniciado")
 }) 
 
-module.exports.app = firebase.https.onRequest(app)
+//module.exports.app = firebase.https.onRequest(app)
 
 
 
