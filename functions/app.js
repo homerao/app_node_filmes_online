@@ -1,6 +1,7 @@
 // requires necessários
 const express = require('express')
 const handlebars = require('express-handlebars')
+const path = require('path')
 const apiIndex = require('./routes/apiroutes/ApiIndexRoutes')
 const helmet = require('helmet')
 const morgan = require('morgan')
