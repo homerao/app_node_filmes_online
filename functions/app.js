@@ -9,7 +9,7 @@ const bodyParser = require('body-parser')
 const app = express()
 const webRoutes = require('./routes/webroutes/userWebRoutes')
 // setando o handlebars
-app.engine('handlebars', handlebars({defaultLayout:'main'}))
+app.engine('hbs', handlebars({defaultLayout:'main'}))
 app.set('view engine', 'handlebars')
 // setando o body parser
 app.use(bodyParser.urlencoded({extended: true}))
