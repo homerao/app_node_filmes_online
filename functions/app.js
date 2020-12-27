@@ -16,7 +16,7 @@ app.set('views', __dirname + '/views');
 // setando o body parser
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static('../public'));
 // setando o morgan
 app.use(morgan("common"))
 // setando o helmet
