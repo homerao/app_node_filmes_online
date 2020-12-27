@@ -2,7 +2,7 @@ const homeRoutes = require('express').Router()
 
 
 homeRoutes.get('/index', (req, res)=>{
-      res.render('index')
+      res.render('index.hbs')
 })
 
 module.exports = homeRoutes
