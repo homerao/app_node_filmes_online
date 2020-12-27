@@ -27,7 +27,7 @@ app.use('/', webRoutes)
 app.use('/api', apiIndex)
 
  app.listen(process.env.PORT, ()=>{
-    console.log("Servidor iniciado")
+    console.log("Servidor iniciado " + __dirname + " " + path.join(__dirname,'functions/public'))
 }) 
 
 //module.exports.app = firebase.https.onRequest(app)
