@@ -11,6 +11,7 @@ const webRoutes = require('./routes/webroutes/userWebRoutes')
 // setando o handlebars
 app.engine('hbs', handlebars({defaultLayout:'main', extname:'hbs', layoutsDir:'./functions/views/layouts',partialsDir:'./functions/views/layouts/partials'}))
 app.set('view engine', 'handlebars')
+app.set('views', __dirname + '/functions/views');
 // setando o body parser
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
