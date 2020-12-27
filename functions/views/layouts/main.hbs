@@ -15,8 +15,13 @@
   <link rel="stylesheet" href="css/wireframe.css">
 </head>
 <body>
-  {{>unloggedheader}}
-    {{_body}}
-    {{>footer}}
+  {{# if userlogged}}
+  {{> loggedheader}}
+  {{ else }}
+  {{> unloggedheader}}
+  {{/if}}
+  
+    {{{body}}}
+  {{>footer}}
 </body>
 </html>
