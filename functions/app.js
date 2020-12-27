@@ -7,7 +7,7 @@ const morgan = require('morgan')
 const cors = require('cors')
 const bodyParser = require('body-parser')
 const app = express()
-
+const webRoutes = require('./routes/webroutes/userWebRoutes')
 const port = 3000
 app.engine('hbs', handlebars({defaultLayout:'main'}))
 app.set('view engine', 'handlebars')
@@ -16,6 +16,7 @@ app.use(bodyParser.json())
 app.use(morgan("common"))
 
 app.use(helmet())
+app.use('/', webRoutes)
 app.use('/', apiIndex)
 
  app.listen(process.env.PORT, ()=>{
