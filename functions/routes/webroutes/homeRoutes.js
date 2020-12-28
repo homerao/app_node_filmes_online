@@ -13,6 +13,6 @@ homeRoutes.get('/', (req, res)=>{
 
 homeRoutes.get('/login', (req, res)=>{
   const data = {title:'login', userlogged:false}
-    res.render('index.hbs', data)
+    res.render('login.hbs', data)
 })
 module.exports = homeRoutes
