@@ -26,8 +26,8 @@ app.use(helmet())
 app.use('/', webRoutes)
 app.use('/api', apiIndex)
 
-app.listen(process.env.PORT === undefined ? 3000: process.env.PORT, ()=>{
-    console.log("Servidor iniciado " + __dirname + " " + path.join(__dirname,'/public'))
+app.listen(process.env.NODE_ENV === 'development' ? 3000: process.env.PORT, ()=>{
+    console.log("Servidor iniciado na porta" + process.env.PORT + " " + path.join(__dirname,'/public'))
 }) 
 
 //module.exports.app = firebase.https.onRequest(app)
