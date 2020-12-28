@@ -26,7 +26,7 @@ app.use(helmet())
 app.use('/', webRoutes)
 app.use('/api', apiIndex)
 
- app.listen(3000, ()=>{
+app.listen(process.env.PORT === undefined ? 3000: process.env.PORT, ()=>{
     console.log("Servidor iniciado " + __dirname + " " + path.join(__dirname,'/public'))
 }) 
 
