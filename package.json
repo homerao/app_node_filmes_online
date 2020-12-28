@@ -25,6 +25,7 @@
   "homepage": "https://github.com/homerao/app_node_filmes_online#readme",
   "dependencies": {
     "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-handlebars": "^5.2.0",
     "express-rate-limit": "^5.2.3",
