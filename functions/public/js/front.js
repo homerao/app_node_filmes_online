@@ -6,3 +6,4 @@ function carregou(){
    data.item(i).innerHTML = newData[i];
    alert("I am an alert box!");
   }
+}
