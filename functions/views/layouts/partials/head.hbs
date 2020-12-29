@@ -15,11 +15,11 @@
   <link rel="stylesheet" href="css/wireframe.css">
   <script src="js/front.js"></script>
 </head>
-<body onload="carregou()" >
+<body >
   
   <script >
      
-function carregou(){
+
     let data = document.getElementsByClassName('card-text');
     let newData= [];
   for(i=0; i< data.length; i++){
@@ -27,5 +27,5 @@ function carregou(){
    data.item(i).innerHTML = newData[i];
    alert("I am an alert box!");
   }
-}
+
   </script>
