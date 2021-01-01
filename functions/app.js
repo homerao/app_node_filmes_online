@@ -8,12 +8,12 @@ const morgan = require('morgan')
 const cors = require('cors')
 const bodyParser = require('body-parser')
 const app = express()
-const webRoutes = require('./routes/webroutes/userWebRoutes')
+const webRoutes = require('./routes/webroutes/webRoutes')
 const authentication = require('./middlewares/AuthMiddleware')
 //setando o cors
 app.use(cors())
 // setando o middleware de authentication
-app.use(authentication)
+//app.use(authentication)
 // setando o handlebars
 app.engine('hbs', handlebars({defaultLayout:'main', extname:'hbs', layoutsDir:__dirname+'/views/layouts',partialsDir:__dirname+'/views/layouts/partials'}))
 app.set('view engine', 'handlebars')
@@ -24,10 +24,10 @@ app.use(bodyParser.json())
 app.use(express.static(path.join(__dirname,'/public')));
 console.log(__dirname + " " + path.join(__dirname,'/public'))
 // setando o morgan
-//app.use(morgan("common"))
+app.use(morgan("common"))
 
 // setando o helmet
-//app.use(helmet())
+app.use(helmet())
 
 
 // setando as rotas da aplicação web

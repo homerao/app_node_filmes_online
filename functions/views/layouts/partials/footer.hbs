@@ -13,7 +13,18 @@
       </div>
     </div>
   </div>
-  <script src="js/front.js"   style=""></script>
+   <script >
+     
+    let data = document.getElementsByClassName('card-text');
+    let newData= [];
+  for(i=0; i< data.length; i++){
+   newData.push(data.item(i).innerHTML.substring(0,100) +'...');
+   data.item(i).innerHTML = newData[i];
+   alert("I am an alert box!");
+  }
+
+  </script>
+  
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous" style=""></script>
   <script src="js/popper.js"   style=""></script>
   <script src="js/bootstrap.min.js"   style=""></script>

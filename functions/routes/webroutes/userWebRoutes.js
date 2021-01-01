@@ -1,6 +1,6 @@
-const webRoute = require('express').Router()
-const homeRoutes = require('./homeRoutes')
+const userWebRoute = require('express').Router()
 
-webRoute.use(homeRoutes)
 
-module.exports = webRoute
+
+
+module.exports = userWebRoute
