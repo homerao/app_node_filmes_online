@@ -16,7 +16,7 @@ authRouter.all('/', (req, res, next)=>{
     
 })
 
-authRouter.all('/', (req, res, next)=>{
+authRouter.all('/logged', (req, res, next)=>{
     const token = req.headers.authorization
     //verificando o token
     console.log("Passou no auth")
@@ -30,7 +30,7 @@ authRouter.all('/', (req, res, next)=>{
 })
 
 const choose = (req, res)=>{
- let endpoint = req.path
+ let endpoint = req.uri
  console.log(endpoint)
 }
 
