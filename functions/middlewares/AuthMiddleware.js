@@ -6,6 +6,7 @@ authRouter.all('/', (req, res, next)=>{
     const token = req.headers.authorization
     //verificando o token
     console.log("Passou no auth")
+    choose(req, res)
     if(!token){
         
         return res.status('401').send({error: "erro, por favor preencha suas credenciais"})
@@ -27,6 +28,11 @@ authRouter.all('/', (req, res, next)=>{
     }
     
 })
+
+const choose = (req, res)=>{
+ let endpoint = req.path
+ console.log(endpoint)
+}
 
 authRouter.use('/api/auth', (req, res, next)=>{
     
