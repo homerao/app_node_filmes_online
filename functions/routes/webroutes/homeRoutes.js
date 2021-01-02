@@ -14,23 +14,43 @@ homeRoutes.get('/', (req, res)=>{
     res.render('homepages/index.hbs', data)
 })
 
+homeRoutes.get('/home', (req, res)=>{
+  const data = {title:'Home', userlogged:true}
+  res.set('Cache-Control', 'public, max-age=300, s-maxage=600')
+    res.render('homepages/index.hbs', data)
+})
+
 homeRoutes.get('/login', (req, res)=>{
-  const data = {title:'login', userlogged:false}
+  const data = {title:'Login', userlogged:false}
   res.set('Cache-Control', 'public, max-age=300, s-maxage=600')
     res.render('homepages/login.hbs', data)
 })
 
 homeRoutes.get('/logoff', (req, res)=>{
-  const data = {title:'login', userlogged:false}
+  const data = {title:'Login', userlogged:false}
   res.set('Cache-Control', 'public, max-age=300, s-maxage=600')
     res.render('homepages/login.hbs', data)
 })
 
 homeRoutes.get('/planos', (req, res)=>{
-  const data = {title:'login', userlogged:false}
+  const data = {title:'Planos', userlogged:false}
   res.set('Cache-Control', 'public, max-age=300, s-maxage=600')
-    res.render('homepages/login.hbs', data)
+    res.render('homepages/planos.hbs', data)
 })
+
+homeRoutes.get('/teams', (req, res)=>{
+  const data = {title:'Planos', userlogged:false}
+  res.set('Cache-Control', 'public, max-age=300, s-maxage=600')
+    res.render('homepages/desenvolvedores.hbs', data)
+})
+
+homeRoutes.get('/filmes', (req, res)=>{
+  const data = {title:'Filmes', userlogged:false}
+  res.set('Cache-Control', 'public, max-age=300, s-maxage=600')
+    res.render('homepages/filmes.hbs', data)
+})
+
+
 
 
 module.exports = homeRoutes
