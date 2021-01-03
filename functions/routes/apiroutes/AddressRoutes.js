@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const controller = require('../../controllers/AddressController')
+const controller = require('../../resourceControllers/AddressController')
 
 
 router.put('/', async (req, res)=>{

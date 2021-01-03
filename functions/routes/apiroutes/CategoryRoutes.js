@@ -1,4 +1,4 @@
-const CategoryController = require('../../controllers/CategoryController')
+const CategoryController = require('../../resourceControllers/CategoryController')
 
 const CategoryRouter = require('express').Router()
 
