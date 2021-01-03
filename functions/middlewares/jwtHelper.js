@@ -8,5 +8,5 @@ return token
 const decode = (token) => {
 let splited = token.split('.')
 let payloadEncoded = splited[0]
-
+let 
 }

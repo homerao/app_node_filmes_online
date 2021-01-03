@@ -9,7 +9,8 @@ console.log('Passou no set headers')
 
 const setHeadersPolicy = (res) =>{
     
-    res.set('Content-Security-Policy', 'default-src *; script-src *')
+    res.set('Content-Security-Policy', 'default-src *; script-src localhost')
+    res.set('X-Content-Type-Options', 'nosniff')
 }
 
 const setCache = (res) =>{

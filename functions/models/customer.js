@@ -50,6 +50,11 @@ Customer.init({
     type: DataTypes.DATE,
     allowNull: true,
     defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
+  },
+  password: {
+    type: DataTypes.STRING(128),
+    allowNull: false,
+    defaultValue: Sequelize.literal('12345')
   }
 }, {
   sequelize,
