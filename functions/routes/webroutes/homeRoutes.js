@@ -1,6 +1,6 @@
 const homeRoutes = require('express').Router()
 const filmes = require('../../mock-data/sample-data')
-
+const customerController = require('../../webControllers/CustomerController')
 homeRoutes.get('/index', (req, res)=>{
     const data = {title:'Index', userlogged:true}
     res.set('Cache-Control', 'public, max-age=300, s-maxage=600')
@@ -22,7 +22,7 @@ homeRoutes.get('/home', (req, res)=>{
 
 homeRoutes.get('/login', (req, res)=>{
   const data = {title:'Login', userlogged:false}
-  res.set('Cache-Control', 'public, max-age=300, s-maxage=600')
+ 
     res.render('homepages/login.hbs', data)
 })
 
@@ -54,6 +54,10 @@ homeRoutes.get('/cadastro', (req, res)=>{
   const data = {title:'Cadastro', userlogged:false,}
   res.set('Cache-Control', 'public, max-age=300, s-maxage=600')
     res.render('homepages/cadastro.hbs', data)
+})
+
+homeRoutes.post('/authentication',  (req, res)=>{
+   customerController.login(req, res)
 })
 
 

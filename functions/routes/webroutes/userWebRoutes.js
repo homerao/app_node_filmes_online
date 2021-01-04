@@ -1,6 +1,6 @@
 const userWebRoute = require('express').Router()
 const authMiddleware = require('../../middlewares/AuthMiddleware')
-userWebRoute.get('/', authMiddleware, (req, res)=>{
+userWebRoute.get('/', (req, res)=>{
   return res.send("pagina logada")
 })
 

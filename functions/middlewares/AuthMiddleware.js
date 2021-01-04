@@ -18,6 +18,7 @@ authRouter.all('/', (req, res, next)=>{
 
 authRouter.all('/logged', (req, res, next)=>{
     const token = req.headers.authorization
+    console.log(token)
     //verificando o token
     console.log("Passou no auth")
     if(!token){

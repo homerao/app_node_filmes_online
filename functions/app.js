@@ -8,7 +8,7 @@ const morgan = require('morgan')
 const cors = require('cors')
 const bodyParser = require('body-parser')
 const app = express()
-
+const homeRoutes = require('./routes/webroutes/homeRoutes')
 const webRoutes = require('./routes/webroutes/webRoutes')
 //setando o cors
 app.use(cors())
@@ -40,7 +40,8 @@ app.use(helmet.xssFilter());
 
 
 // setando as rotas da aplicação web
-app.use('/', webRoutes)
+app.use('/', homeRoutes)
+app.use('/web', webRoutes)
 app.use('/api', apiIndex)
 
  app.listen((process.env.NODE_ENV === 'development' ? 3000: process.env.PORT), ()=>{

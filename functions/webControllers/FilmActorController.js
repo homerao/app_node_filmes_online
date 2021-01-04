@@ -1,6 +1,6 @@
 const service =  require('../services/CityService')
 
-class CustomerController  {
+class CityController  {
     save(req, res)  {
     let city = req.body
     service.save(city).then((data)=>{
@@ -20,7 +20,7 @@ class CustomerController  {
        
     }
     findById(req, res){
-    service.findOneById(id).then((data)=>{
+    service.findOneById(req.params.city_id).then((data)=>{
         return res.send(data)
         }).catch((err)=>{
           return res.send(err)
@@ -58,4 +58,4 @@ class CustomerController  {
 
 }
 
-module.exports = new CustomerController()
+module.exports = new CityController()
