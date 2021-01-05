@@ -1,6 +1,6 @@
 const customerRepository = require('../repositories/sqlRepositories/customerRepository')
 const repository = require('../repositories/sqlRepositories/customerRepository')
-const hashing = require('../utils/security')
+const Security = require('../utils/security')
 class CustomerService {
       async save(customer){
         customer.password = hashing(customer.password)
@@ -37,10 +37,18 @@ class CustomerService {
       }
 
       async login(email, password){
-        let hashedPassword = await hashing(password)
-        console.log(hashedPassword)
-      let customer = await customerRepository.login(email, hashedPassword)
+        
+      let customer = await customerRepository.login(email)
+      console.log(customer)
+      
+      if(password === customer.getDataValue('passwd')){
+        console.log('retornou o customer')
       return customer
+      } else {
+        
+      return new Error('Credenciais não coincidem')
+      }
+     
       }
 
       async logout(){

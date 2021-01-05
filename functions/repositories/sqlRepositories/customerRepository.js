@@ -31,8 +31,8 @@ class CustomerRepository {
   async count(){
   return await Model.count()
   }
-  async login(email, password){
-    let customer = await Model.findOne({where:{password:password, email:email} })
+  async login(email){
+    let customer = await Model.findOne({where:{email:email} })
     console.log('veio no repository '+ customer)
     return customer
   }

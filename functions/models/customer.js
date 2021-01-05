@@ -46,7 +46,7 @@ Customer.init({
     type: DataTypes.DATE,
     allowNull: false
   },
-  password: {
+  passwd: {
     type: DataTypes.STRING(128),
     allowNull: false,
     defaultValue: Sequelize.literal('12345')

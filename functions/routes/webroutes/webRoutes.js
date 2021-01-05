@@ -1,11 +1,11 @@
 const webRoutes = require('express').Router()
-const authMiddleware = require('../../middlewares/AuthMiddleware')
+const WebauthMiddleware = require('../../middlewares/WebAuthMiddleware')
 const userWebRoutes = require('./userWebRoutes')
 const headers = require('../../middlewares/HeadersMiddleware')
 const customerRoutes = require('./customerRoutes')
 //registrando as rotas do site 
-webRoutes.use('/actors', authMiddleware, headers, userWebRoutes)
-webRoutes.use('/customers', authMiddleware, headers, customerRoutes)
+webRoutes.use('/actors', WebauthMiddleware, headers, userWebRoutes)
+webRoutes.use('/customers', WebauthMiddleware, headers, customerRoutes)
 
 
 module.exports = webRoutes

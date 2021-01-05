@@ -2,7 +2,7 @@ const apiIndexRouter = require('express').Router()
 const apiActorRoutes = require('./ActorRoutes')
 const apiAddressRoutes = require('./AddressRoutes')
 const CategoryRouter = require('./CategoryRoutes')
-const authMiddleware = require('../../middlewares/AuthMiddleware')
+const authMiddleware = require('../../middlewares/ApiAuthMiddleware')
 const headers = require('../../middlewares/HeadersMiddleware')
 
 // rotas e middleware de autenticação
