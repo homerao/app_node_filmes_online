@@ -41,14 +41,12 @@ class CustomerService {
       let customer = await customerRepository.login(email)
       console.log(customer)
       
-      if(password === customer.getDataValue('passwd')){
-        console.log('retornou o customer')
-      return customer
+      let accepted = await Security.compare(password, customer.getDataValue('passwd'))
+      if(accepted){
+        return customer
       } else {
-        
-      return new Error('Credenciais não coincidem')
+        return false
       }
-     
       }
 
       async logout(){

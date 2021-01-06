@@ -74,7 +74,7 @@ class WebCustomerController  {
     let encripted = await Security.hashingPassword(password)
     console.log(email,encripted )
     let customer =  await service.login(email, password)
-          if(customer != undefined && customer != Error){
+          if(customer){
             console.log('customer encontrado')
             let {customer_id,  email} = customer
             console.log("Customer data ****** "+customer.toString())
@@ -86,6 +86,7 @@ class WebCustomerController  {
             console.log(token)
            return  res.redirect('/web/customers/menu')
           } else {
+            res.redirect('/login')
             console.log('erro de login')
           }
   }
