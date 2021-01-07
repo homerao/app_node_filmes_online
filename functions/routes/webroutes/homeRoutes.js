@@ -60,6 +60,15 @@ homeRoutes.post('/authentication',  (req, res)=>{
    customerController.login(req, res)
 })
 
+homeRoutes.post('/new-customer', async (req, res)=>{
+  
+  customerController.save(req, res)
+})
+
+homeRoutes.post('/email-confirmation', async (req, res)=>{
+   res.render('homepages/email-confirmation.hbs')
+})
+
 
 
 

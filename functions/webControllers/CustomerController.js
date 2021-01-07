@@ -1,14 +1,16 @@
 const service =  require('../services/CustomerService')
 const jwtHelper = require('../middlewares/jwtHelper')
 const Security = require('../utils/security')
-const { options } = require('../models/customer')
+
 class WebCustomerController  {
     save(req, res)  {
-    let customer = req.body
-    service.save(city).then((data)=>{
-    return res.send(data)
+    let {first_name, last_name, email, password} = req.body
+    let customer = {customer_id: null, first_name:first_name, last_name: last_name,email: email,passwd:password, store_id:1, address_id:605, create_date: new Date()}
+    console.log(customer)
+    service.save(customer).then((data)=>{
+    return res.redirect('/email-confirmation')
     }).catch((err)=>{
-      return res.send(err)
+      return res.redirect('/cadastro')
     })
     
     }
