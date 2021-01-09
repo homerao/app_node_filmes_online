@@ -11,6 +11,7 @@ const app = express()
 const homeRoutes = require('./routes/webroutes/homeRoutes')
 const webRoutes = require('./routes/webroutes/webRoutes')
 const public = require('./middlewares/PublicMiddleware')
+const session = require('express-session')
 //setando o cors
 app.use(cors())
 // setando o handlebars
@@ -48,7 +49,15 @@ app.use(helmet.noSniff());
 app.use(helmet.permittedCrossDomainPolicies());
 app.use(helmet.referrerPolicy());
 app.use(helmet.xssFilter()); 
-//app.use(helmet())
+//configuração da sessão do express
+app.use(session({secret:process.env.NODE_SESSION_SECRET,
+                 cookie:{domain:'filmesonline2020',maxAge:12000,sameSite: true, path: '/', httpOnly:true},
+                resave: false,
+                saveUninitialized: true
+}))
+
+
+
 
 
 // setando as rotas da aplicação web
