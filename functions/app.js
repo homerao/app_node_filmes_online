@@ -10,6 +10,7 @@ const bodyParser = require('body-parser')
 const app = express()
 const homeRoutes = require('./routes/webroutes/homeRoutes')
 const webRoutes = require('./routes/webroutes/webRoutes')
+const public = require('./middlewares/PublicMiddleware')
 //setando o cors
 app.use(cors())
 // setando o handlebars
@@ -19,13 +20,24 @@ app.set('views', __dirname + '/views');
 // setando o body parser
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
-app.use(express.static(path.join(__dirname,'/public')));
-console.log(__dirname + " " + path.join(__dirname,'/public'))
+// configurando arquivos estáticos
+app.use(express.static(path.join(__dirname,'public')));
+public.use('/css', express.static(path.join(__dirname,'/public/css')))
+public.use('/js', express.static(path.join(__dirname,'/public/js')))
+public.use('/fontawesome', express.static(path.join(__dirname,'/public/fontawesome')))
+public.use('/imgs', express.static(path.join(path.join(__dirname,'/public/imgs'))))
+public.use('/static', express.static(path.join(path.join(__dirname,'/public'))))
+console.log("Path do servidor "+ path.join(__dirname,'public/fontawesome'))
 // setando o morgan
 app.use(morgan("common"))
 
 // setando o helmet
-//app.use(helmet.contentSecurityPolicy());
+/* app.use(helmet.contentSecurityPolicy({
+    directives:{
+      defaultSrc:["'self'"],
+      scriptSrc:["'self'", 'http?(s)://localhost:'+process.env.PORT,'code.jquery.com','maxcdn.bootstrapcdn.com'],
+      styleSrc:["'self'",'http?(s)://localhost:'+process.env.PORT,'maxcdn.bootstrapcdn.com'],
+      fontSrc:["'self'",'http?(s)://localhost:'+process.env.PORT,'maxcdn.bootstrapcdn.com']}})); */
 app.use(helmet.dnsPrefetchControl());
 app.use(helmet.expectCt());
 app.use(helmet.frameguard());
@@ -35,7 +47,7 @@ app.use(helmet.ieNoOpen());
 app.use(helmet.noSniff());
 app.use(helmet.permittedCrossDomainPolicies());
 app.use(helmet.referrerPolicy());
-app.use(helmet.xssFilter());
+app.use(helmet.xssFilter()); 
 //app.use(helmet())
 
 
