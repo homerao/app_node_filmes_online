@@ -39,6 +39,7 @@ app.use(morgan("common"))
       scriptSrc:["'self'", 'http?(s)://localhost:'+process.env.PORT,'code.jquery.com','maxcdn.bootstrapcdn.com'],
       styleSrc:["'self'",'http?(s)://localhost:'+process.env.PORT,'maxcdn.bootstrapcdn.com'],
       fontSrc:["'self'",'http?(s)://localhost:'+process.env.PORT,'maxcdn.bootstrapcdn.com']}})); */
+// configurando helmet
 app.use(helmet.dnsPrefetchControl());
 app.use(helmet.expectCt());
 app.use(helmet.frameguard());
