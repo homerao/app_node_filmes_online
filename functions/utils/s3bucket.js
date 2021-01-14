@@ -7,8 +7,8 @@ const getFileType = (file) =>{
   return filetype
 }
 const upload = async (path ="/", file, generatedName)=>{
-   s3.upload({Bucket:process.env.AWS_BUCKET+path, Key:generatedName,Body:file.buffer  }).on()
-
+   s3.upload({Bucket:process.env.AWS_BUCKET+path, Key:generatedName,Body:file.buffer  }).on('httpUploadProgress'. )
+ffff
 }
 
 
