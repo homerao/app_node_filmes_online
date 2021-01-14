@@ -23,13 +23,13 @@ homeRoutes.get('/home', (req, res)=>{
 homeRoutes.get('/login', (req, res)=>{
   const data = {title:'Login', userlogged:false}
  
-    res.render('homepages/login.hbs', data)
+    res.render('homepages/account/login.hbs', data)
 })
 
 homeRoutes.get('/logoff', (req, res)=>{
   const data = {title:'Login', userlogged:false}
   res.set('Cache-Control', 'public, max-age=300, s-maxage=600')
-    res.render('homepages/login.hbs', data)
+    res.render('homepages/account/login.hbs', data)
 })
 
 homeRoutes.get('/planos', (req, res)=>{
@@ -53,7 +53,7 @@ homeRoutes.get('/filmes', (req, res)=>{
 homeRoutes.get('/cadastro', (req, res)=>{
   const data = {title:'Cadastro', userlogged:false,}
   res.set('Cache-Control', 'public, max-age=300, s-maxage=600')
-    res.render('homepages/cadastro.hbs', data)
+    res.render('homepages/account/cadastro.hbs', data)
 })
 
 homeRoutes.post('/authentication',  (req, res)=>{
@@ -66,7 +66,15 @@ homeRoutes.post('/new-customer', async (req, res)=>{
 })
 
 homeRoutes.post('/email-confirmation', async (req, res)=>{
-   res.render('homepages/email-confirmation.hbs')
+   res.render('homepages/account/email-confirmation.hbs')
+})
+
+homeRoutes.post('/password-request-form', async (req, res)=>{
+  res.render('homepages/account/request-password.hbs')
+})
+
+homeRoutes.post('/password-request', async (req, res)=>{
+  
 })
 
 
