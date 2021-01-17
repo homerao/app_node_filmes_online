@@ -87,6 +87,7 @@ class WebCustomerController  {
             res.setHeader('x-access-token',token)
             console.log(token)
            let data = {userlogged:true,}
+           
            return  res.render('customers/customermenu.hbs', data)
           } else {
             res.redirect('/login')
