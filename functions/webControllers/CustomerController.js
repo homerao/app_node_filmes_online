@@ -86,7 +86,8 @@ class WebCustomerController  {
             let token = jwtHelper(payload)
             res.setHeader('x-access-token',token)
             console.log(token)
-           return  res.redirect('/web/customers/menu')
+            data = {userlogged:true}
+           return  res.render('/customers/customermenu.hbs')
           } else {
             res.redirect('/login')
             console.log('erro de login')
