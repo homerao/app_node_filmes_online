@@ -51,11 +51,11 @@ app.use(helmet.permittedCrossDomainPolicies());
 app.use(helmet.referrerPolicy());
 app.use(helmet.xssFilter()); 
 //configuração da sessão do express
-app.use(session({secret:process.env.NODE_SESSION_SECRET,
+/* app.use(session({secret:process.env.NODE_SESSION_SECRET,
                  cookie:{domain:'filmesonline2020',maxAge:12000,sameSite: true, path: '/', httpOnly:true},
                 resave: false,
                 saveUninitialized: true
-}))
+})) */
 
 
 
