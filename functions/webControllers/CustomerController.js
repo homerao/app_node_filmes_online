@@ -78,10 +78,10 @@ class WebCustomerController  {
     let customer =  await service.login(email, password)
           if(customer){
             console.log('customer encontrado')
-            let {customer_id,  email} = customer
+            let {customer_id,  email, first_name} = customer
             console.log("Customer data ****** "+customer.toString())
             console.log({customer_id:customer_id,  email: email, })
-            let payload = {customer_id:customer_id,  email: email, }
+            let payload = {customer_id:customer_id,first_name:first_name,email: email, }
             
             let token = jwtHelper(payload)
             res.setHeader('x-access-token',token)
