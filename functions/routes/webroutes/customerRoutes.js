@@ -5,13 +5,16 @@ const s3 = require('../../utils/s3bucket')
 
 
 customerRoute.get('/menu', async (req, res) =>{
-     let pageData = req.body
+     let pageData = {userlogged: true, customer:true}
       res.render('customers/customermenu.hbs',pageData)
 })
-
+customerRoute.get('/my-subscription', async (req, res) =>{
+      let pageData = req.body
+       res.render('customers/profile.hbs',pageData)
+})
 customerRoute.get('/my-profile', async (req, res) =>{
       let pageData = req.body
-       res.render('customers/customermenu.hbs',pageData)
+       res.render('customers/profile.hbs',pageData)
 })
 
 customerRoute.get('/profile-edit', async (req, res) =>{

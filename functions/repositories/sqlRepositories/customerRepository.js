@@ -3,6 +3,7 @@ const Model = require('../../models/customer')
 
 class CustomerRepository {
   async save(customer){
+    console.log(customer)
     let saved = await Model.create(customer)
     return saved
   }

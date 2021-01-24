@@ -5,11 +5,13 @@ const Security = require('../utils/security')
 class WebCustomerController  {
     save(req, res)  {
     let {first_name, last_name, email, password} = req.body
-    let customer = {customer_id: null, first_name:first_name, last_name: last_name,email: email,passwd:password, store_id:1, address_id:605, create_date: new Date()}
+    let customer = {customer_id: null, first_name:first_name, last_name: last_name,email: email,passwd:password, store_id:1, address_id:605, create_date: new Date(), last_update: new Date()}
     console.log(customer)
     service.save(customer).then((data)=>{
+      console.log(data)
     return res.redirect('/email-confirmation')
     }).catch((err)=>{
+      console.log('Erro ao salvar '+ err)
       return res.redirect('/cadastro')
     })
     
@@ -88,7 +90,7 @@ class WebCustomerController  {
             console.log(token)
            let data = {userlogged:true,}
            
-           return  res.render('customers/customermenu.hbs', data)
+           return  res.redirect('web/customers/menu')
           } else {
             res.redirect('/login')
             console.log('erro de login')

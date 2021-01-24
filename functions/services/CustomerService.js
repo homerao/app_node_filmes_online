@@ -1,9 +1,11 @@
 const customerRepository = require('../repositories/sqlRepositories/customerRepository')
 const repository = require('../repositories/sqlRepositories/customerRepository')
 const Security = require('../utils/security')
+
 class CustomerService {
       async save(customer){
-        customer.passwd = hashing(customer.passwd)
+        let hashedPasswd = await Security.hashingPassword(customer.passwd)
+        customer.passwd = hashedPasswd 
        let saved = await repository.save(customer)
        return saved
       }

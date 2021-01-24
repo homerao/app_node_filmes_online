@@ -1,7 +1,11 @@
 
 {{> head}}
   {{#if userlogged}}
-  {{> loggednavbar}}
+  {{#if customer}}
+  {{> customernavbar}}
+  {{ else }}
+  {{> staffnavbar}}
+  {{/if}}
   {{ else }}
   {{> unloggednavbar}}
   {{/if}}
