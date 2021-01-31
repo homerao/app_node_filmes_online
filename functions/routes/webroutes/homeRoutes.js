@@ -1,62 +1,84 @@
 const homeRoutes = require('express').Router()
 const filmes = require('../../mock-data/sample-data')
 const customerController = require('../../webControllers/CustomerController')
-let data = null
+
 homeRoutes.get('/index', (req, res)=>{
-    checkLoged(req ,res)
-      res.render('homepages/index.hbs', data)
+    
+let  session = req.session
+let  pageData = session.pageData
+      res.render('homepages/index.hbs', pageData)
 })
 
 homeRoutes.get('/', (req, res)=>{
-  checkLoged(req ,res)
+let  session = req.session
+let  pageData = session.pageData
+  console.log(session)
   res.set('Cache-Control', 'public, max-age=300, s-maxage=600')
-    res.render('homepages/index.hbs', data)
+    res.render('homepages/index.hbs', pageData)
 })
 
 homeRoutes.get('/home', (req, res)=>{
   
-  checkLoged(req ,res)
+let  session = req.session
+let  pageData = session.pageData
+  console.log("Sessão na home "+session)
   res.set('Cache-Control', 'public, max-age=300, s-maxage=600')
-    res.render('homepages/index.hbs', data)
+    res.render('homepages/index.hbs', pageData)
 })
 
 homeRoutes.get('/login', (req, res)=>{
-  checkLoged(req ,res)
- 
-    res.render('homepages/account/login.hbs', data)
+let  session = req.session
+let  pageData = session.pageData
+  
+    res.render('homepages/account/login.hbs', pageData)
 })
 
 homeRoutes.get('/logoff', (req, res)=>{
-  checkLoged(req ,res)
+  
+  req.session.destroy()
   res.set('Cache-Control', 'public, max-age=300, s-maxage=600')
-    res.render('homepages/account/login.hbs', data)
+    res.render('homepages/account/login.hbs', pageData)
 })
 
 homeRoutes.get('/planos', (req, res)=>{
-  checkLoged(req ,res)
+let  session = req.session
+let  pageData = session.pageData
+  console.log(session)
   res.set('Cache-Control', 'public, max-age=300, s-maxage=600')
-    res.render('homepages/planos.hbs', data)
+    res.render('homepages/planos.hbs', pageData)
 })
 
 homeRoutes.get('/teams', (req, res)=>{
-  checkLoged(req ,res)
+let  session = req.session
+let  pageData = session.pageData
+  console.log(session)
   res.set('Cache-Control', 'public, max-age=300, s-maxage=600')
-    res.render('homepages/desenvolvedores.hbs', data)
+    res.render('homepages/desenvolvedores.hbs', pageData)
 })
 
 homeRoutes.get('/filmes', (req, res)=>{
-  checkLoged(req ,res)
+ 
+let  session = req.session
+let  pageData = session.pageData
+  console.log(session)
   res.set('Cache-Control', 'public, max-age=300, s-maxage=600')
-    res.render('homepages/filmes.hbs', data)
+    res.render('homepages/filmes.hbs', pageData)
 })
 
 homeRoutes.get('/cadastro', (req, res)=>{
-  checkLoged(req ,res)
-  res.set('Cache-Control', 'public, max-age=300, s-maxage=600')
-    res.render('homepages/account/cadastro.hbs', data)
+let  session = req.session
+let  pageData = session.pageData
+  if(pageData.user){
+     res.render('homepages/index.hbs', pageData)
+  } else {
+    res.set('Cache-Control', 'public, max-age=300, s-maxage=600')
+    res.render('homepages/account/cadastro.hbs')
+  }
+  
 })
 
 homeRoutes.post('/authentication',  (req, res)=>{
+  
    customerController.login(req, res)
 })
 
@@ -66,10 +88,12 @@ homeRoutes.post('/new-customer', async (req, res)=>{
 })
 
 homeRoutes.get('/email-confirmation', async (req, res)=>{
+  
    res.render('homepages/account/email-confirmation.hbs')
 })
 
 homeRoutes.get('/password-request-form', async (req, res)=>{
+  
   res.render('homepages/account/request-password.hbs')
 })
 

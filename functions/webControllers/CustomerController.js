@@ -78,6 +78,17 @@ class WebCustomerController  {
     let encripted = await Security.hashingPassword(password)
     console.log(email,encripted )
     let customer =  await service.login(email, password)
+    let session
+    if(customer){
+     session = req.session 
+     session.pageData = {'logged':true, 'customer':true, 'user':customer.get({plain:true}) }
+     
+     console.log(req.session)
+      return  res.render('homepages/index.hbs', session.pageData)
+    } else {
+      res.redirect('/login')
+    }
+    /* 
           if(customer){
             console.log('customer encontrado')
             let {customer_id,  email, first_name} = customer
@@ -95,6 +106,7 @@ class WebCustomerController  {
             res.redirect('/login')
             console.log('erro de login')
           }
+           */
   }
 
  async logout(req, res){
