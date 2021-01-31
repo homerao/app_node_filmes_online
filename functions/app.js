@@ -52,9 +52,9 @@ app.use(helmet.referrerPolicy());
 app.use(helmet.xssFilter()); 
 //configuração da sessão do express
  app.use(session({secret:process.env.NODE_SESSION_SECRET,name:"filmes2020",
-                 cookie:{domain:'filmesonline2020',maxAge:60 * 60 * 60,sameSite: true, path: '/', httpOnly:true, secure:'auto'},
-                resave: false,
-                saveUninitialized: false
+                 
+                resave: true,
+                saveUninitialized: true
 
 })) 
 

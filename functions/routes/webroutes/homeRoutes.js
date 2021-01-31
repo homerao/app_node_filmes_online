@@ -13,7 +13,7 @@ homeRoutes.get('/', (req, res)=>{
 let  session = req.session
 let  pageData = session.pageData
   console.log(session)
-  res.set('Cache-Control', 'public, max-age=300, s-maxage=600')
+  
     res.render('homepages/index.hbs', pageData)
 })
 
@@ -22,7 +22,7 @@ homeRoutes.get('/home', (req, res)=>{
 let  session = req.session
 let  pageData = session.pageData
   console.log("Sessão na home "+session)
-  res.set('Cache-Control', 'public, max-age=300, s-maxage=600')
+  
     res.render('homepages/index.hbs', pageData)
 })
 
@@ -34,17 +34,17 @@ let  pageData = session.pageData
 })
 
 homeRoutes.get('/logoff', (req, res)=>{
-  
+ 
   req.session.destroy()
-  res.set('Cache-Control', 'public, max-age=300, s-maxage=600')
-    res.render('homepages/account/login.hbs', pageData)
+  
+    res.render('homepages/account/login.hbs')
 })
 
 homeRoutes.get('/planos', (req, res)=>{
 let  session = req.session
 let  pageData = session.pageData
   console.log(session)
-  res.set('Cache-Control', 'public, max-age=300, s-maxage=600')
+  
     res.render('homepages/planos.hbs', pageData)
 })
 
@@ -52,7 +52,7 @@ homeRoutes.get('/teams', (req, res)=>{
 let  session = req.session
 let  pageData = session.pageData
   console.log(session)
-  res.set('Cache-Control', 'public, max-age=300, s-maxage=600')
+  
     res.render('homepages/desenvolvedores.hbs', pageData)
 })
 
@@ -61,19 +61,17 @@ homeRoutes.get('/filmes', (req, res)=>{
 let  session = req.session
 let  pageData = session.pageData
   console.log(session)
-  res.set('Cache-Control', 'public, max-age=300, s-maxage=600')
+  
     res.render('homepages/filmes.hbs', pageData)
 })
 
 homeRoutes.get('/cadastro', (req, res)=>{
 let  session = req.session
 let  pageData = session.pageData
-  if(pageData.user){
-     res.render('homepages/index.hbs', pageData)
-  } else {
-    res.set('Cache-Control', 'public, max-age=300, s-maxage=600')
-    res.render('homepages/account/cadastro.hbs')
-  }
+
+    
+    res.render('homepages/account/cadastro.hbs', pageData)
+  
   
 })
 
