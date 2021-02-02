@@ -1,6 +1,7 @@
 const service =  require('../services/CustomerService')
 const jwtHelper = require('../middlewares/jwtHelper')
 const Security = require('../utils/security')
+const emailSender = require('../utils/emailManager')
 
 class WebCustomerController  {
     save(req, res)  {
@@ -9,6 +10,7 @@ class WebCustomerController  {
     console.log(customer)
     service.save(customer).then((data)=>{
       console.log(data)
+      emailSender.registrationEmail(first_name, email, 'dfsdsdfs65g4gggsg65h4hj4j6hj4j654s6454hj4jjj4')
     return res.redirect('/email-confirmation')
     }).catch((err)=>{
       console.log('Erro ao salvar '+ err)
