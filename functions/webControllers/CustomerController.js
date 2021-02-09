@@ -6,11 +6,12 @@ const emailSender = require('../utils/emailManager')
 class WebCustomerController  {
     save(req, res)  {
     let {first_name, last_name, email, password} = req.body
-    let customer = {customer_id: null, first_name:first_name, last_name: last_name,email: email,passwd:password, store_id:1, address_id:605, create_date: new Date(), last_update: new Date()}
+    let customer = {customer_id: null, first_name:first_name, last_name: last_name,email: email,passwd:password, store_id:1, address_id:605, active: false,  create_date: new Date(), last_update: new Date()}
     console.log(customer)
     service.save(customer).then((data)=>{
       console.log(data)
-      emailSender.registrationEmail(first_name, email, 'dfsdsdfs65g4gggsg65h4hj4j6hj4j654s6454hj4jjj4')
+      let token = jwtHelper.sign(email)
+      emailSender.registrationEmail(first_name, email, token)
     return res.redirect('/email-confirmation')
     }).catch((err)=>{
       console.log('Erro ao salvar '+ err)
@@ -18,9 +19,14 @@ class WebCustomerController  {
     })
     
     }
+
+    registerActivation = (req, res) => {
+    let decoded = jwtHelper.decodeEmailRegistration(req.params.token)
+    console.log(decoded)
+    }
     async update(req, res) {
        let  customer = req.body
-       service.update(city).then((data)=>{
+       service.update(customer).then((data)=>{
         return res.send(data)
         }).catch((err)=>{
           return res.send(err)
@@ -76,19 +82,28 @@ class WebCustomerController  {
     }
 
    async login(req, res){
+    console.log("Logado antes do if")
     let {email, password} = req.body
     let encripted = await Security.hashingPassword(password)
     console.log(email,encripted )
     let customer =  await service.login(email, password)
+      
     let session
-    if(customer){
+    let error = ""
+    
+    if(customer && customer.get('active')){
      session = req.session 
      session.pageData = {'logged':true, 'customer':true, 'user':customer.get({plain:true}) }
-     
+     console.log("Logado")
+     console.log(plainCustomer)
      console.log(req.session)
       return  res.render('homepages/index.hbs', session.pageData)
+    } else if(!plainCustomer.active){
+      error = "Por favor, valide seu email de cadastro"
+      return res.render('/login', error)
     } else {
-      res.redirect('/login')
+      error = "credenciais inválidas"
+      return res.render('/login', error) 
     }
     /* 
           if(customer){

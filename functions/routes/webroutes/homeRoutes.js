@@ -75,6 +75,11 @@ let  pageData = session.pageData
   
 })
 
+homeRoutes.get('/active-registration/:token', async (req, res) =>{
+  let pageData = req.session.pageData
+   res.render('customers/profile.hbs',pageData)
+})
+
 homeRoutes.post('/authentication',  (req, res)=>{
   
    customerController.login(req, res)

@@ -17,6 +17,8 @@ customerRoute.get('/my-profile', async (req, res) =>{
        res.render('customers/profile.hbs',pageData)
 })
 
+
+
 customerRoute.get('/profile-edit', async (req, res) =>{
       let pageData = req.session.pageData
        res.render('customers/profile-edit.hbs',pageData)
