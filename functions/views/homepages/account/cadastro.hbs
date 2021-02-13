@@ -13,6 +13,15 @@
               <div class="form-group col-md-6"> <label for="form19">Senha</label> <input type="password" name="password" class="form-control" id="form19" placeholder="******"> </div>
               <div class="form-group col-md-6"> <label for="form20">Confirmar senha</label> <input type="password" name="repassword" class="form-control" id="form20" placeholder="******"> </div>
             </div>
+            <div class="form-group"> <label for="form21">CEP</label> <input type="text"  pattern="xx-xxx-xxx" placeholder="ex: 99-999-999" maxlength="15" class="form-control" onblur="onLeave()" name="postal_code" id="form21" placeholder="Cep"> </div>
+            <div class="form-group"> <label for="form22">Endereço</label> <input type="text" class="form-control" name="address" id="form22" placeholder="Endereço"> </div>
+            <div class="form-group"> <label for="form23">Bairro</label> <input type="text" class="form-control" id="form23" name="district" placeholder="Bairro"> </div>
+            {{>countrydropdown}}
+
+            {{>citydropdown}}
+            <div class="form-group"> <label for="form26">Estado</label> <input type="text" class="form-control" id="form26" name="district" placeholder="Estado"> </div>
+            <div class="form-group mb-3"> <label for="form27">Telefone</label> <input type="tel" pattern="(xx)-xxxxx-xxxx" maxlength="15"  class="form-control" id="form27" name="phone"  placeholder="(xx)-xxxxx-xxxx"> </div>
+            
             <button type="submit" class="btn btn-primary w-100">Cadastrar</button>
           </form>
         </div>

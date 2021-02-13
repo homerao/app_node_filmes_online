@@ -13,6 +13,10 @@ const webRoutes = require('./routes/webroutes/webRoutes')
 const public = require('./middlewares/PublicMiddleware')
 const session = require('express-session')
 //setando o cors
+app.use((req, res, next)=>{
+    res.header('Access-Control-Allow-Origin', '*')
+    next()
+})
 app.use(cors())
 // setando o handlebars
 app.engine('hbs', handlebars({defaultLayout:'main', extname:'hbs', layoutsDir:__dirname+'/views/layouts',partialsDir:__dirname+'/views/layouts/partials'}))

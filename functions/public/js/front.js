@@ -45,3 +45,33 @@ function validaFormLogin(){
   
   return true
 }
+
+function limpaCamposDeEndereco (){
+  document.getElementById("form22").value = ""
+  document.getElementById("form23").value = ""
+  document.getElementById("form24").value = ""
+  document.getElementById("form25").value = ""
+  alert('Campos limpos')
+}
+function pegaCEPDoForm(){
+ let cep = document.getElementById("form22").value
+ return cep
+}
+async function buscaCEP(cep){
+let endereco = await fetch('https://viacep.com.br/ws/'+cep+'/json/')
+return endereco
+}
+async function onLeave(){
+  buscaCEP(pegaCEPDoForm()).then((data)=>{
+    return preencheCamposDeEndereco(data)
+  }).catch((err)=>{
+    alert('Falha o buscar o cpf '+ err)
+  })
+}
+
+function preencheCamposDeEndereco(endereco){
+  document.getElementById("form22").value = data.logradouro
+  document.getElementById("form23").value = data.bairro
+  document.getElementById("form25").value = data.localidade
+  return alert('OK')
+}

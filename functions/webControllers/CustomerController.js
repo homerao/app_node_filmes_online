@@ -2,22 +2,36 @@ const service =  require('../services/CustomerService')
 const jwtHelper = require('../middlewares/jwtHelper')
 const Security = require('../utils/security')
 const emailSender = require('../utils/emailManager')
+const addressService = require('../services/AddressService')
+
 
 class WebCustomerController  {
     save(req, res)  {
     let {first_name, last_name, email, password} = req.body
     let customer = {customer_id: null, first_name:first_name, last_name: last_name,email: email,passwd:password, store_id:1, address_id:605, active: false,  create_date: new Date(), last_update: new Date()}
     console.log(customer)
+    let addr = {address, address2, district, city_id, postal_code, phone, location, last_update} = req.body
     service.save(customer).then((data)=>{
+      saveAdress(addr).then((saveAddress)=>{
+        emailSender.registrationEmail(first_name, email, token)
+        console.log(saveAddress)
+        return res.redirect('/email-confirmation')
+      }).catch((err)=>{
+       console.log('erro ao salvar o endereço '+ err)
+      })
       console.log(data)
       let token = jwtHelper.sign(email)
-      emailSender.registrationEmail(first_name, email, token)
-    return res.redirect('/email-confirmation')
+
+    
     }).catch((err)=>{
       console.log('Erro ao salvar '+ err)
       return res.redirect('/cadastro')
     })
     
+    }
+
+    async saveAdress(address)  {
+    return await addressService.save(address)
     }
 
     registerActivation = (req, res) => {
