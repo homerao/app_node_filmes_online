@@ -6,21 +6,20 @@
           <p class="mb-3">Preencha os dados para realizar a sua assinatura</p>
           <p class="mb-3 ">{{err}}</p>
           <form class="text-left" action="/new-customer" onsubmit="return validaFormLogin()" method="POST">
-            <div class="form-group"> <label for="form16">Seu primeiro nome</label> <input type="text" class="form-control" name="first_name" id="form16" placeholder="Johann"> </div>
-            <div class="form-group"> <label for="form17">Seu segundo nome</label> <input type="text" class="form-control" id="form17" name="last_name" placeholder="Goethe"> </div>
-            <div class="form-group"> <label for="form18">Seu e-mail</label> <input type="email" class="form-control" id="form18" name="email" placeholder="j.goethe@werther.com"> </div>
+            <div class="form-group"> <label for="nome">Seu primeiro nome</label> <input type="text" class="form-control" name="first_name" id="nome" placeholder="Johann"> </div>
+            <div class="form-group"> <label for="sobrenome">Seu segundo nome</label> <input type="text" class="form-control" id="sobrenome" name="last_name" placeholder="Goethe"> </div>
+            <div class="form-group"> <label for="email">Seu e-mail</label> <input type="email" class="form-control" id="email" name="email" placeholder="j.goethe@werther.com"> </div>
             <div class="form-row">
-              <div class="form-group col-md-6"> <label for="form19">Senha</label> <input type="password" name="password" class="form-control" id="form19" placeholder="******"> </div>
-              <div class="form-group col-md-6"> <label for="form20">Confirmar senha</label> <input type="password" name="repassword" class="form-control" id="form20" placeholder="******"> </div>
+              <div class="form-group col-md-6"> <label for="senha">Senha</label> <input type="password" name="password" class="form-control" id="senha" placeholder="******"> </div>
+              <div class="form-group col-md-6"> <label for="redigitasenha">Confirmar senha</label> <input type="password" name="repassword" class="form-control" id="redigitasenha" placeholder="******"> </div>
             </div>
-            <div class="form-group"> <label for="form21">CEP</label> <input type="text"  pattern="xx-xxx-xxx" placeholder="ex: 99-999-999" maxlength="9" class="form-control" onblur="onLeave()" name="postal_code" id="form21" placeholder="Cep"> </div>
-            <div class="form-group"> <label for="form22">Endereço</label> <input type="text" class="form-control" name="address" id="form22" placeholder="Endereço"> </div>
-            <div class="form-group"> <label for="form23">Bairro</label> <input type="text" class="form-control" id="form23" name="district" placeholder="Bairro"> </div>
-            {{>countrydropdown}}
+            <div class="form-group"> <label for="cep">CEP</label> <input type="text"  pattern="xx.xxx-xxx" placeholder="ex: 99.999-999" maxlength="10" class="form-control" onblur="onLeave()" name="postal_code" id="cep" placeholder="Cep"> </div>
+            <div class="form-group"> <label for="endereco">Endereço</label> <input type="text" class="form-control" name="address" id="endereco" placeholder="Endereço"> </div>
+            <div class="form-group"> <label for="bairro">Bairro</label> <input type="text" class="form-control" id="bairro" name="district" placeholder="Bairro"> </div>
 
-            {{>citydropdown}}
-            <div class="form-group"> <label for="form26">Estado</label> <input type="text" class="form-control" id="form26" name="district" placeholder="Estado"> </div>
-            <div class="form-group mb-3"> <label for="form27">Telefone</label> <input type="tel" pattern="(xx)-xxxxx-xxxx" maxlength="15"  class="form-control" id="form27" name="phone"  placeholder="(xx)-xxxxx-xxxx"> </div>
+            <div class="form-group"> <label for="cidade">Cidade</label> <input type="text" class="form-control" id="cidade" name="city" placeholder="Cidade"> </div>
+            <div class="form-group"> <label for="estado">Estado</label> <input type="text" class="form-control" id="estado" name="state" placeholder="Estado"> </div>
+            <div class="form-group mb-3"> <label for="telefone">Telefone</label> <input type="tel" pattern="(xx)-xxxxx-xxxx" maxlength="15"  class="form-control" id="telefone" name="phone"  placeholder="(xx)-xxxxx-xxxx"> </div>
             
             <button type="submit" class="btn btn-primary w-100">Cadastrar</button>
           </form>

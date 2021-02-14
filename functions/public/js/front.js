@@ -53,31 +53,52 @@ function limpaCamposDeEndereco (){
   document.getElementById("form25").value = ""
   alert('Campos limpos')
 }
+function cepMask(){
+ let cep = document.getElementById("cep").value
+}
 function pegaCEPDoForm(){
- let cep = document.getElementById("form21").value
- return cep
+ let unformated = document.getElementById("cep").value
+ cep = Number.parseInt(unformated.replace("-", "").replace(".",""))
+ let erros = []
+ 
+ if(isNaN(cep)){
+    erros.push("Cep contém caracteres que não são números")
+ }
+ if(erros.length > 0){
+  erros.forEach(alert)
+  return -1
+ } else {
+  return cep
+ }
+ 
 }
 async function buscaCEP(cep){
 let endereco = await fetch('https://viacep.com.br/ws/'+cep+'/json/')
 return endereco
 }
  async function onLeave(){
-  buscaCEP(pegaCEPDoForm()).then((response)=>{
-  response.json().then((data)=>{
-   preencheCamposDeEndereco(data)
-  }).catch((err)=>{ alert('ocorreu um erro com o json')})
-  }).catch((err)=>{
-    alert('Não foi possível buscar o cpf')
-  })
+   let cep = pegaCEPDoForm()
+   if(cep == -1){
+    alert('Digite um CEP válido')
+   } else {
+    buscaCEP(pegaCEPDoForm()).then((response)=>{
+      response.json().then((data)=>{
+       preencheCamposDeEndereco(data)
+      }).catch((err)=>{ alert('ocorreu um erro com o json')})
+      }).catch((err)=>{
+        alert('Não foi possível buscar o cpf')
+      })
+   }
+  
   
  
 }
 
 async function preencheCamposDeEndereco(endereco){
-  document.getElementById("form22").value = await endereco.logradouro
-  document.getElementById("form23").value = await endereco.bairro
-  document.getElementById("form25").value = await endereco.localidade
-  document.getElementById("form26").value = await endereco.uf
+  document.getElementById("endereco").value = await endereco.logradouro
+  document.getElementById("bairro").value = await endereco.bairro
+  document.getElementById("cidade").value = await endereco.localidade
+  document.getElementById("estado").value = await endereco.uf
 
   
 }
