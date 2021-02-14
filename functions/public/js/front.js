@@ -54,24 +54,30 @@ function limpaCamposDeEndereco (){
   alert('Campos limpos')
 }
 function pegaCEPDoForm(){
- let cep = document.getElementById("form22").value
+ let cep = document.getElementById("form21").value
  return cep
 }
 async function buscaCEP(cep){
 let endereco = await fetch('https://viacep.com.br/ws/'+cep+'/json/')
 return endereco
 }
-async function onLeave(){
-  buscaCEP(pegaCEPDoForm()).then((data)=>{
-    return preencheCamposDeEndereco(data)
+ async function onLeave(){
+  buscaCEP(pegaCEPDoForm()).then((response)=>{
+  response.json().then((data)=>{
+   preencheCamposDeEndereco(data)
+  }).catch((err)=>{ alert('ocorreu um erro com o json')})
   }).catch((err)=>{
-    alert('Falha o buscar o cpf '+ err)
+    alert('Não foi possível buscar o cpf')
   })
+  
+ 
 }
 
-function preencheCamposDeEndereco(endereco){
-  document.getElementById("form22").value = data.logradouro
-  document.getElementById("form23").value = data.bairro
-  document.getElementById("form25").value = data.localidade
-  return alert('OK')
+async function preencheCamposDeEndereco(endereco){
+  document.getElementById("form22").value = await endereco.logradouro
+  document.getElementById("form23").value = await endereco.bairro
+  document.getElementById("form25").value = await endereco.localidade
+  document.getElementById("form26").value = await endereco.uf
+
+  
 }

@@ -14,10 +14,12 @@ const public = require('./middlewares/PublicMiddleware')
 const session = require('express-session')
 //setando o cors
 app.use((req, res, next)=>{
-    res.header('Access-Control-Allow-Origin', '*')
+    res.header('Access-Control-Allow-Origin', 'https://viacep.com.br/ws//json')
+    res.header('Access-Control-Allow-Methods', 'GET')
+    cors()
     next()
 })
-app.use(cors())
+
 // setando o handlebars
 app.engine('hbs', handlebars({defaultLayout:'main', extname:'hbs', layoutsDir:__dirname+'/views/layouts',partialsDir:__dirname+'/views/layouts/partials'}))
 app.set('view engine', 'handlebars')
@@ -37,14 +39,9 @@ console.log("Path do servidor "+ path.join(__dirname,'public/fontawesome'))
 app.use(morgan("common"))
 
 // setando o helmet
-/* app.use(helmet.contentSecurityPolicy({
-    directives:{
-      defaultSrc:["'self'"],
-      scriptSrc:["'self'", 'http?(s)://localhost:'+process.env.PORT,'code.jquery.com','maxcdn.bootstrapcdn.com'],
-      styleSrc:["'self'",'http?(s)://localhost:'+process.env.PORT,'maxcdn.bootstrapcdn.com'],
-      fontSrc:["'self'",'http?(s)://localhost:'+process.env.PORT,'maxcdn.bootstrapcdn.com']}})); */
+ 
 // configurando helmet
-app.use(helmet.dnsPrefetchControl());
+ app.use(helmet.dnsPrefetchControl());
 app.use(helmet.expectCt());
 app.use(helmet.frameguard());
 app.use(helmet.hidePoweredBy());
@@ -53,12 +50,12 @@ app.use(helmet.ieNoOpen());
 app.use(helmet.noSniff());
 app.use(helmet.permittedCrossDomainPolicies());
 app.use(helmet.referrerPolicy());
-app.use(helmet.xssFilter()); 
+app.use(helmet.xssFilter());  
 //configuração da sessão do express
  app.use(session({secret:process.env.NODE_SESSION_SECRET,name:"filmes2020",
                  
                 resave: true,
-                saveUninitialized: true
+                saveUninitialized: true,cookie: {sameSite: true, secure: true, maxAge:1000*60*60*12}
 
 })) 
 

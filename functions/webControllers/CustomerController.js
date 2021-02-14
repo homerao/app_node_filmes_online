@@ -107,9 +107,10 @@ class WebCustomerController  {
     
     if(customer && customer.get('active')){
      session = req.session 
+     let plainCustomer = await customer.get({plain:true})
      session.pageData = {'logged':true, 'customer':true, 'user':customer.get({plain:true}) }
      console.log("Logado")
-     console.log(plainCustomer)
+     
      console.log(req.session)
       return  res.render('homepages/index.hbs', session.pageData)
     } else if(!plainCustomer.active){

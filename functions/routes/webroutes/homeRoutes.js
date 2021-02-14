@@ -1,5 +1,7 @@
 const homeRoutes = require('express').Router()
+const jwtHelper = require('../../middlewares/jwtHelper')
 const filmes = require('../../mock-data/sample-data')
+const security = require('../../utils/security')
 const customerController = require('../../webControllers/CustomerController')
 
 homeRoutes.get('/index', (req, res)=>{
@@ -76,6 +78,7 @@ let  pageData = session.pageData
 })
 
 homeRoutes.get('/active-registration/:token', async (req, res) =>{
+  let splited = {'token':token, 'email':email} = jwtHelper.decode(req.params.token)
   let pageData = req.session.pageData
    res.render('customers/profile.hbs',pageData)
 })
