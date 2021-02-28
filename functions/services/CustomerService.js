@@ -28,6 +28,10 @@ class CustomerService {
         let found = await repository.findOneByLastName(name)
         return found
       }
+      async findOneByEmail(email){
+        let found = await repository.findByEmail(email)
+        return found
+      }
 
       async findAll(limit, offset){
       let found = await repository.findAll(limit, offset)

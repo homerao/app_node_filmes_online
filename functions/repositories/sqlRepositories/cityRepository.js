@@ -18,7 +18,7 @@ class CityRepository {
   }
 
   async findOneByName(city_name) {
-  let found = await Model.findOne({where:{[Op.like]:'%'+city_name}})
+  let found = await Model.findOne({where: {city:{[Op.like]:"%"+city_name}}})
   return found
   }
 

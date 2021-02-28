@@ -1,3 +1,5 @@
+const { compare } = require("bcrypt");
+
 function carregou(){
   
     Document.addEventListener('onload',()=>{
@@ -12,15 +14,22 @@ function carregou(){
     })
     
 }
-
+function enableDisableSendButton(){
+   
+  if(validaFormLogin()){
+    document.getElementById("submit").disabled = false 
+  } else {
+    document.getElementById("submit").disabled = true
+  }
+}
 function validaFormLogin(){
   let listErrors = []
   let email, password, repassword, first_name, last_name
-  email = document.getElementById('form18').value
-  password = document.getElementById('form19').value
-  repassword = document.getElementById('form20').value
-  first_name = document.getElementById('form16').value
-  last_name = document.getElementById('form17').value
+  email = document.getElementById('email').value
+  password = document.getElementById('password').value
+  repassword = document.getElementById('redigitasenha').value
+  first_name = document.getElementById('nome').value
+  last_name = document.getElementById('sobrenome').value
   if(email === ""){
    listErrors.push('E-mail vazio')
    
@@ -53,9 +62,17 @@ function limpaCamposDeEndereco (){
   document.getElementById("form25").value = ""
   alert('Campos limpos')
 }
+function telefoneMask(){
+  let telefone = document.getElementById("telefone").value
+ var formatted = telefone.replace(/^(\d{2})(\d{5})(\d{4}).*/,"($1) $2-$3");
+ document.getElementById("telefone").value = formatted
+}
 function cepMask(){
  let cep = document.getElementById("cep").value
+ var formatted = cep.replace(/^(\d{2})(\d{3})(\d{3}).*/,"$1.$2-$3");
+ document.getElementById("cep").value = formatted
 }
+
 function pegaCEPDoForm(){
  let unformated = document.getElementById("cep").value
  cep = Number.parseInt(unformated.replace("-", "").replace(".",""))

@@ -40,8 +40,9 @@ Address.init(
       allowNull: false
     },
     location: {
-      type: DataTypes.GEOMETRY,
-      allowNull: false
+      type: DataTypes.GEOMETRY('POINT',0),
+      allowNull: true,
+      
     },
     last_update: {
       type: DataTypes.DATE,
@@ -69,13 +70,7 @@ Address.init(
           { name: "city_id" },
         ]
       },
-      {
-        name: "idx_location",
-        type: "SPATIAL",
-        fields: [
-          { name: "location", length: 32 },
-        ]
-      },
+      
     ]
   }
 )

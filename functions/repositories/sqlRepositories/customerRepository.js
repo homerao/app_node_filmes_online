@@ -24,6 +24,11 @@ class CustomerRepository {
     return found
  }
 
+ async findByEmail(email){
+  let found = await Model.findOne({where:{email:{[Op.like]:'%'+email}}})
+  return found
+}
+
   async findAll(limit, offset){
   let customers  = await Model.findAll(limit, offset)
   return customers

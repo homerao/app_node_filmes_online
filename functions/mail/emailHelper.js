@@ -6,6 +6,7 @@ const {host, port, user, pass} = require('')
 
 
 const transport = nodemailer.createTransport({
+    /*escrevendo um comentário*/ 
     host, port, auth: {user, pass},
 })
 

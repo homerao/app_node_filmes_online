@@ -4,9 +4,9 @@ class CityController  {
     save(req, res)  {
     let city = req.body
     service.save(city).then((data)=>{
-    return res.send(data)
+    return console.log("Endereço salvo com sucesso "+ data)
     }).catch((err)=>{
-      return res.send(err)
+      return console.log("Falha ao cadastrar o endereço "+ err)
     })
     
     }
@@ -28,12 +28,12 @@ class CityController  {
     }
 
     async findByName(req, res){
-    let name = req.query.first_name
+    let city = req.body.city
         
-    service.findOneByName(name).then((data)=>{
-        return res.send(data)
+    service.findOneByName(city).then((data)=>{
+        return console.log("Cidade encontrada ")
         }).catch((err)=>{
-          return res.send(err)
+          return console.log("Falha ao buscar a cidade "+ err)
         })
     
     }
