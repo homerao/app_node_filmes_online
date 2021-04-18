@@ -12,6 +12,20 @@ const homeRoutes = require('./routes/webroutes/homeRoutes')
 const webRoutes = require('./routes/webroutes/webRoutes')
 const public = require('./middlewares/PublicMiddleware')
 const session = require('express-session')
+const mysql = require('mysql')
+const MysqlStore = require('express-mysql-session')(session)
+const connection = mysql.createConnection({  host:process.env.MYSQL_HOST,
+port: process.env.PORT,
+user: process.env.USER,
+password: process.env.PASSWORD,
+database: 'sakila'})
+const sessionStore = new MysqlStore({schema: {
+    tableName: 'sessions',
+    columnNames: {
+        session_id: 'session_id',
+        expires: 'expires',
+        data: 'data'
+    }}}, connection)
 //setando o cors
 app.use((req, res, next)=>{
     res.header('Access-Control-Allow-Origin', 'https://viacep.com.br/ws//json')
@@ -55,7 +69,9 @@ app.use(helmet.xssFilter());
  app.use(session({secret:process.env.NODE_SESSION_SECRET,name:"filmes2020",
                  
                 resave: true,
-                saveUninitialized: true,cookie: {sameSite: true, secure: true, maxAge:1000*60*60*12}
+                saveUninitialized: false,
+                cookie: {sameSite: true, secure: true, maxAge:1000*60*60*12},
+                store:sessionStore
 
 })) 
 

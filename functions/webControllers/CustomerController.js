@@ -143,22 +143,18 @@ class WebCustomerController  {
    async login(req, res){
     console.log("Logado antes do if")
     let {email, password} = req.body
-    let encripted = await Security.hashingPassword(password)
-    console.log(email,encripted )
     let customer =  await service.login(email, password)
     let plainCustomer =  customer.toJSON()
-    let session = req.session
     let error = ""
-    console.log("play "+ plainCustomer)
-    if(Security.compare(encripted,plainCustomer.passwd) && plainCustomer.active == true){
-     
-     
-     session.pageData = {'logged':true, 'customer':true, 'user':plainCustomer }
+    let validUser = await Security.compare(password,plainCustomer.passwd)
+    if( validUser && plainCustomer.active == 1){
+     let userData = {"logged":true, "customer":true, "user":plainCustomer }
+     req.session.pageData = userData
+     res.locals.pageData = userData
      console.log("Logado")
-     
      console.log(req.session)
       return  res.redirect('/web/customers/menu')
-    } else if(!plainCustomer.active){
+    } else if(plainCustomer.active == 0){
       error = "Por favor, valide seu email de cadastro"
       return res.redirect('/login')
     } else {

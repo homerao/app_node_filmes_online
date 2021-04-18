@@ -5,6 +5,7 @@ const webAuthMiddleware = require('../../middlewares/WebAuthMiddleware')
 
 
 customerRoute.get('/menu',webAuthMiddleware,  (req, res) =>{
+      
       let session = req.session
       console.log(session)
      let user = session.pageData.user
