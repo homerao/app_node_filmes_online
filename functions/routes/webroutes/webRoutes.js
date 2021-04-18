@@ -4,8 +4,8 @@ const userWebRoutes = require('./userWebRoutes')
 const headers = require('../../middlewares/HeadersMiddleware')
 const customerRoutes = require('./customerRoutes')
 //registrando as rotas do site 
-webRoutes.use('/actors', WebauthMiddleware, headers, userWebRoutes)
-webRoutes.use('/customers', WebauthMiddleware, headers, customerRoutes)
+webRoutes.use('/actors',headers, userWebRoutes)
+webRoutes.use('/customers',  headers, customerRoutes)
 
 
 module.exports = webRoutes

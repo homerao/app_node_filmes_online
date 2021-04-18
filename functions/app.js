@@ -66,7 +66,7 @@ app.use(helmet.permittedCrossDomainPolicies());
 app.use(helmet.referrerPolicy());
 app.use(helmet.xssFilter());  
 //configuração da sessão do express
- app.use(session({secret:process.env.NODE_SESSION_SECRET,name:"filmes2020",
+ app.use(session({secret:process.env.NODE_SESSION_SECRET,
                  
                 resave: true,
                 saveUninitialized: false,
