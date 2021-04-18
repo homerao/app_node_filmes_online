@@ -1,25 +1,14 @@
-const  jwt = require('jsonwebtoken')
-const webAuthRouter = require('express').Router()
 
-
-webAuthRouter.get('/', (req, res, next)=>{
-    const token = req.getHeader('x-access-token')
-    console.log(token)
-    const splited = req.headers.authorization.split(' ')[1]
-    if(!splited){
-      res.redirect('/login')
-    }
-    //verificando o token
-    console.log("Passou no auth")
-    if(!token){
-        res.redirect('/login')
-        
-    } else {
+const webAuthMiddleware = (req, res, next) =>{
+     let user = req.session.user
+     if(typeof user !== 'undefined'){
         next()
-    }
-    
-})
+     } else {
+         res.redirect('/login')
+     }
+}
+
+module.exports = webAuthMiddleware
 
 
 
-module.exports = webAuthRouter

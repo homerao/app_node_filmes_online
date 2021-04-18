@@ -51,7 +51,7 @@ class CustomerService {
       if(accepted){
         return customer
       } else {
-        return false
+        return null
       }
       }
 

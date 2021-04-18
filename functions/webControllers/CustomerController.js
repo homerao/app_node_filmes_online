@@ -146,24 +146,24 @@ class WebCustomerController  {
     let encripted = await Security.hashingPassword(password)
     console.log(email,encripted )
     let customer =  await service.login(email, password)
-      
-    let session
+    let plainCustomer =  customer.toJSON()
+    let session = req.session
     let error = ""
-    
-    if(customer && customer.get('active')){
-     session = req.session 
-     let plainCustomer = await customer.get({plain:true})
-     session.pageData = {'logged':true, 'customer':true, 'user':customer.get({plain:true}) }
+    console.log("play "+ plainCustomer)
+    if(Security.compare(encripted,plainCustomer.passwd) && plainCustomer.active == true){
+     
+     
+     session.pageData = {'logged':true, 'customer':true, 'user':plainCustomer }
      console.log("Logado")
      
      console.log(req.session)
-      return  res.render('homepages/index.hbs', session.pageData)
+      return  res.redirect('/web/customers/menu')
     } else if(!plainCustomer.active){
       error = "Por favor, valide seu email de cadastro"
-      return res.render('/login', error)
+      return res.redirect('/login')
     } else {
       error = "credenciais inválidas"
-      return res.render('/login', error) 
+      return res.redirect('/login') 
     }
     /* 
           if(customer){
