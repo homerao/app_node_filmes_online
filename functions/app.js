@@ -68,9 +68,9 @@ app.use(helmet.xssFilter());
 //configuração da sessão do express
  app.use(session({secret:process.env.NODE_SESSION_SECRET,
                  
-                resave: true,
+                resave: false,
                 saveUninitialized: false,
-                cookie: {sameSite: true, secure: true, maxAge:1000*60*60*12},
+               
                 store:sessionStore
 
 })) 

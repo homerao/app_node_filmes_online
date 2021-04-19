@@ -22,10 +22,18 @@ let  pageData = session.pageData
 homeRoutes.get('/home', (req, res)=>{
   
 let  session = req.session
-let  pageData = session.pageData
-  console.log("Sessão na home "+session)
+let  pageData;
+if(session.pageData){
+  pageData = session.pageData
+  console.log("Sessão na home "+session + " "+ pageData)
+  res.render('homepages/index.hbs', pageData)
+} else {
+  res.render('homepages/index.hbs')
+}
+
   
-    res.render('homepages/index.hbs', pageData)
+  
+    
 })
 
 homeRoutes.get('/login', (req, res)=>{

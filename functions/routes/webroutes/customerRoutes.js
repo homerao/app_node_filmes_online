@@ -1,6 +1,6 @@
 const customerRoute = require('express').Router()
 const s3 = require('../../utils/s3bucket')
-const webAuthMiddleware = require('../../middlewares/WebAuthMiddleware').default
+const webAuthMiddleware = require('../../middlewares/WebAuthMiddleware')
 
 
 
@@ -8,8 +8,8 @@ customerRoute.get('/menu',webAuthMiddleware,  (req, res, next) =>{
      
       let session = req.session
       console.log(session)
-     let user = session.pageData.user
-      res.render('customers/customermenu.hbs',user)
+     let pageData = session.pageData
+      res.render('customers/customermenu.hbs',pageData)
 })
 customerRoute.get('/my-subscription', webAuthMiddleware, (req, res) =>{
       let pageData = req.session.pageData

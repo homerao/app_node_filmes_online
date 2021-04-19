@@ -1,5 +1,5 @@
 const webRoutes = require('express').Router()
-const WebauthMiddleware = require('../../middlewares/WebAuthMiddleware')
+const WebauthMiddleware = require('../../middlewares/WebAuthMiddleware').default
 const userWebRoutes = require('./userWebRoutes')
 const headers = require('../../middlewares/HeadersMiddleware')
 const customerRoutes = require('./customerRoutes')
