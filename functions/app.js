@@ -15,10 +15,9 @@ const session = require('express-session')
 const mysql = require('mysql')
 const MysqlStore = require('express-mysql-session')(session)
 const connection = mysql.createConnection({  host:process.env.MYSQL_HOST,
-port: process.env.PORT,
 user: process.env.USER,
 password: process.env.PASSWORD,
-database: 'sakila'})
+database: process.env.DATABASE})
 const sessionStore = new MysqlStore({schema: {
     tableName: 'sessions',
     columnNames: {
