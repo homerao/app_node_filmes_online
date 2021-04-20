@@ -1,5 +1,5 @@
 # FilmesOnline
-[![NPM](https://img.shields.io/npm/l/react)](https://github.com/neliocursos/exemplo-readme/blob/main/LICENSE) 
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 # Sobre o projeto
 
@@ -7,6 +7,7 @@ https://filmesonline2020.herokuapp.com
 
 FilmesOnline é um projeto de sistema de venda de filmes online e planos com pacotes de filmes, seriados e etc.
 O projeto está parcialmente funcionando, o cadastro de cliente funciona corretamente e o login está funcionando com um pequeno problema na session Storage do express-session. Ainda falta implementar muitas funcionalidades como busca de filmes e cadastro de filmes de forma dinâmica.
+A tela de cadastro tem a funcionalidade de busca de endereço por cep utilizando a api viacep de forma dinâmica com javascript assíncrono. Também possúi validação em javascript para muitos campos do cadastro. o projeto foi desenvolvido utilizando o padrão de camadas MVC com repositorios e controllers.
 
 
 
@@ -42,7 +43,7 @@ O projeto está parcialmente funcionando, o cadastro de cliente funciona correta
 
 ## Implantação em produção
 - Back end: Heroku
-- Banco de dados: mysql
+- Banco de dados: mysql AWS RDBMS
 
 # Como executar o projeto
 
