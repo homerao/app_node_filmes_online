@@ -152,13 +152,7 @@ class WebCustomerController  {
      req.session.pageData = userData
      console.log("Logado")
      console.log(req.session)
-     req.session.save((err)=>{
-        if(err == undefined){
-          console.log('Sessão salva com sucesso')
-        } else {
-          console.log('Erro ao salvar a sessão '+ err)
-        }
-     })
+    
       return  res.redirect('/web/customers/menu')
     } else if(plainCustomer.active == 0){
       error = "Por favor, valide seu email de cadastro"
