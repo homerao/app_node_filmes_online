@@ -16,6 +16,7 @@ const mysql = require('mysql')
 const MysqlStore = require('express-mysql-session')(session)
 const connection = mysql.createConnection({  host:process.env.MYSQL_HOST,
 user: process.env.USER,
+port:3306,
 password: process.env.PASSWORD,
 database: process.env.DATABASE})
 const sessionStore = new MysqlStore({schema: {
