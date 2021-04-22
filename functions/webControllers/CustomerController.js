@@ -147,7 +147,7 @@ class WebCustomerController  {
     console.log("Logado antes do if")
     let {email, password} = req.body
     let customer =  await service.login(email, password)
-    let plainCustomer =  customer.toJSON()
+    let plainCustomer =  customer
     let error = ""
     let validUser = await Security.compare(password,plainCustomer.passwd)
     if( validUser && plainCustomer.active == 1){
