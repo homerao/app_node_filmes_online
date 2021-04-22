@@ -10,14 +10,24 @@
             <div class="form-group"> <label for="sobrenome">Seu segundo nome</label> <input type="text" class="form-control" id="sobrenome" name="last_name" placeholder="Goethe"> </div>
             <div class="form-group"> <label for="email">Seu e-mail</label> <input type="email" class="form-control" id="email" name="email" placeholder="j.goethe@werther.com"> </div>
             <div class="form-row">
-              <div class="form-group col-md-5"> <label for="senha">Senha</label> <input type="password" name="password" class="form-control" id="senha" placeholder="******"> </div>
-              <div class="form-group col-md-5"> <label for="redigitasenha">Confirmar senha</label> <input type="password" style="background-color: aquamarine;" name="repassword" class="form-control" id="redigitasenha" placeholder="******"> </div>
-              <div class="form-group col-md-2 " >  <img src="imgs/close.png"  width="16px" height="16px"> </div>
+              <div class="form-group col-md-6"> <label for="senha">Senha</label> <input type="password" name="password" class="form-control" id="senha" placeholder="******"> </div>
+              <div class="form-group col-md-6"> <label for="redigitasenha">Confirmar senha</label> <input type="password" style="background-color: aquamarine;" name="repassword" class="form-control" id="redigitasenha" placeholder="******"> </div>
+              
             </div>
             <div class="form-group"> <label for="cep">CEP</label> <input type="text"   onkeydown="cepMask()" placeholder="ex: 99.999-999" maxlength="10" class="form-control" onblur="onLeave()" name="postal_code" id="cep" placeholder="Cep"> </div>
             <div class="form-group"> <label for="endereco">Endereço</label> <input type="text"  class="form-control" name="address" id="endereco" placeholder="Endereço"> </div>
-            <div class="form-group"> <label for="bairro">Bairro</label> <input type="text" class="form-control"  id="bairro" name="district" placeholder="Bairro"> </div>
-
+              
+            <div class="form-row">
+              
+               <div class="form-group col-md-6"> <label for="bairro">Bairro</label> <input type="text" class="form-control"  id="bairro" name="district" placeholder="Bairro"> </div>
+              
+             
+                <div class="form-group col-md-6"> <label for="endereco">Numero</label> <input type="text"  class="form-control" name="numero" id="numero" placeholder="Numero"> </div>
+          
+              </div>
+            
+            
+              
             <div class="form-group"> <label for="cidade">Cidade</label> <input type="text" class="form-control"  id="cidade" name="city" placeholder="Cidade"> </div>
             <div class="form-group"> <label for="estado">Estado</label> <input type="text" class="form-control"  id="estado" name="state" placeholder="Estado"> </div>
             <div class="form-group mb-3"> <label for="telefone">Telefone</label> <input type="tel"   onblur="telefoneMask()"  maxlength="16"  class="form-control" id="telefone" name="phone"  placeholder="(xx)-xxxxx-xxxx"> </div>

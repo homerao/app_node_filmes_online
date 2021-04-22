@@ -10,30 +10,31 @@ const fun = mysql.fn
 
 class WebCustomerController  {
     save(req, res)  {
-    
+    // pegando os dados da requisição
     let {first_name, last_name, email, password} = req.body
-    let customer = {customer_id: null, first_name:first_name, last_name: last_name,email: email,passwd:password, store_id:1, address_id:null, active: false,  create_date: new Date(), last_update: new Date()}
+    let customer = {customer_id: null, first_name:first_name, last_name: last_name,email: email,passwd:password, store_id:1, address_id:null, active: true,  create_date: new Date(), last_update: new Date()}
     console.log(customer)
     let country_id = 15
-    let addr = {address:req.body.address, district:req.body.district, city_id:null, postal_code:req.body.postal_code, phone:req.body.phone, location:null, last_update:new Date()} 
+    let addr = {address:req.body.address,address_2:req.body.numero , district:req.body.district, city_id:null, postal_code:req.body.postal_code, phone:req.body.phone, location:null, last_update:new Date()} 
     console.log(addr)
     let cidade = {city:req.body.city, country_id:country_id}
-    console.log(req.body)
+    console.log("body form"+req.body)
     console.log(cidade)
+    //inicio da verificação
     service.findOneByEmail(customer.email).then((customerResult)=>{
      if(customerResult == null){
       let recordCity = cityService.findOneByName(cidade.city)
       recordCity.then((cityResult)=>{
        if(cityResult == null){
         cityService.save(cidade).then((savedCity)=>{
-         addr.city_id = savedCity.toJSON().city_id
+         addr.city_id = savedCity.city_id
          console.log("SAved City "+ savedCity.city_id)
          addressService.save(addr).then((addrSaved)=>{
-         customer.address_id = addrSaved.toJSON().address_id
+         customer.address_id = addrSaved.address_id
          service.save(customer).then((savedCustomer)=>{
-          console.log("Customer cadastrado")
+          console.log("Customer cadastrado" + savedCustomer)
          }).catch((custError)=>{
-          console.log("Erro ao cadastrar o customer")
+          console.log("Erro ao cadastrar o customer" + custError)
          })
          }).catch((addrError)=>{
            console.log("Erro ao salvar o endereço  if "+ addrError)
@@ -46,7 +47,7 @@ class WebCustomerController  {
           addr.city_id = data.toJSON().city_id
           console.log("Endereço completo " + data.toJSON() )
           addressService.save(addr).then((data)=>{
-            customer.address_id = data.toJSON.address_id
+            customer.address_id = data.address_id
             console.log("Customer completo "+ customer)
             service.save(customer).then((data)=>{
               console.log(data)
