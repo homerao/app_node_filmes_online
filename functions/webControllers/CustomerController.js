@@ -33,6 +33,8 @@ class WebCustomerController  {
          customer.address_id = addrSaved.address_id
          service.save(customer).then((savedCustomer)=>{
           console.log("Customer cadastrado" + savedCustomer)
+          emailSender.registrationEmail(savedCustomer.get('first_name'),savedCustomer.get('email') )
+          console.log("Email enviado")
          }).catch((custError)=>{
           console.log("Erro ao cadastrar o customer" + custError)
          })
