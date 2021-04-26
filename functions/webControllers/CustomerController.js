@@ -33,7 +33,12 @@ class WebCustomerController  {
          customer.address_id = addrSaved.address_id
          service.save(customer).then((savedCustomer)=>{
           console.log("Customer cadastrado" + savedCustomer)
-          emailSender.registrationEmail(savedCustomer.get('first_name'),savedCustomer.get('email') )
+         emailSender.registrationEmail(savedCustomer.get('first_name'),savedCustomer.get('email') ).then((emailsended)=>{
+           console.log("Email enviado "+ emailsended)
+          res.redirect("/login")
+         }).catch((error)=>{
+           console.log("Não foi possível enviar o e-mail")
+         })
           console.log("Email enviado")
          }).catch((custError)=>{
           console.log("Erro ao cadastrar o customer" + custError)
@@ -48,12 +53,18 @@ class WebCustomerController  {
          cityService.findOneByName(cidade.city).then((data)=>{
           addr.city_id = data.toJSON().city_id
           console.log("Endereço completo " + data.toJSON() )
+          
           addressService.save(addr).then((data)=>{
             customer.address_id = data.address_id
             console.log("Customer completo "+ customer)
             service.save(customer).then((data)=>{
               console.log(data)
-             res.redirect("/login")
+             emailSender.registrationEmail(data.get('first_name'),data.get('email') ).then((emailsended)=>{
+              res.redirect("/login")
+             }).catch((error)=>{
+               console.log("Não foi possível enviar o e-mail")
+             })
+             
             }).catch((err)=>{
   
             })
