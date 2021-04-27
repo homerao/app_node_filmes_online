@@ -8,6 +8,7 @@ const morgan = require('morgan')
 const cors = require('cors')
 const bodyParser = require('body-parser')
 const app = express()
+const flash = require('connect-flash')
 const homeRoutes = require('./routes/webroutes/homeRoutes')
 const webRoutes = require('./routes/webroutes/webRoutes')
 const public = require('./middlewares/PublicMiddleware')
@@ -69,7 +70,7 @@ app.use(helmet.xssFilter());
  app.use(session({secret:process.env.NODE_SESSION_SECRET,
                  
                 resave: false,
-                saveUninitialized: false,
+                saveUninitialized: true,
                
                 store:sessionStore
 
@@ -78,7 +79,7 @@ app.use(helmet.xssFilter());
 
 
 
-
+app.use(flash())
 // setando as rotas da aplicação web
 app.use('/', homeRoutes)
 app.use('/web', webRoutes)

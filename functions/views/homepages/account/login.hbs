@@ -1,6 +1,6 @@
 
- {{#if error}}
- {{>errorMessage}}
+ {{#if errors}}
+ {{{errors}}}
  {{/if }}
   <div class="py-5 mx-auto text-center h-100" style="	background-image: url('/imgs/bg-login.jpg'), linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.8)); background-size: cover, 100%; background-position: left top, left top; ">
     <div class="container">
@@ -10,7 +10,10 @@
           <form action="/authentication" method="POST">
             <div class="form-group"> <input type="email" placeholder="Informe o seu E-mail" id="form9" name="email" class="form-control"> </div>
             <div class="form-group mb-3"> <input type="password" placeholder="Insira a sua senha" id="form10" name="password" class="form-control"> <small class="form-text text-muted text-right">
-                <a href="#"> Recover password</a>
+                <a href="/cadastro" style="color:blueviolet ;"> Não tem conta ? registre-se</a>
+                <br>
+                <a href="#" style="color:brown;"> Recover password</a>
+                
               </small> </div> <button type="submit" class="btn btn-secondary btn-lg btn-block">Acessar</button>
           </form>
         </div>

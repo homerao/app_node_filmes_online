@@ -157,24 +157,29 @@ class WebCustomerController  {
    async login(req, res){
     console.log("Logado antes do if")
     let {email, password} = req.body
-    let customer =  await service.login(email, password)
-    let plainCustomer =  customer
-    let error = ""
-    let validUser = await Security.compare(password,plainCustomer.passwd)
-    if( validUser && plainCustomer.active == 1){
-     let userData = {"logged":true, "customer":true, "user":plainCustomer }
-     req.session.pageData = userData
-     console.log("Logado")
-     console.log(req.session)
-    
-      return  res.redirect('/web/customers/menu')
-    } else if(plainCustomer.active == 0){
-      error = "Por favor, valide seu email de cadastro"
+    try {
+      let customer =  await service.login(email, password)
+      let validUser = await Security.compare(password,customer.passwd)
+      if( validUser && customer.active == 1){
+        let userData = {"logged":true, "customer":true, "user":customer }
+        req.session.pageData = userData
+        console.log("Logado")
+        console.log(req.session)
+       
+         return  res.redirect('/web/customers/menu')
+       } else if(plainCustomer.active == 0){
+         error = "Por favor, valide seu email de cadastro"
+         return res.redirect('/login')
+       } 
+    } catch (error) {
+      req.flash('errors','Falha o fazer o login, usuário não encontrado')
       return res.redirect('/login')
-    } else {
-      error = "credenciais inválidas"
-      return res.redirect('/login') 
     }
+  
+
+    
+    
+    
     /* 
           if(customer){
             console.log('customer encontrado')

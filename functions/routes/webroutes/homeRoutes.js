@@ -38,7 +38,8 @@ if(session.pageData){
 
 homeRoutes.get('/login', (req, res)=>{
 let  session = req.session
-let  pageData = session.pageData
+let  pageData = session.pageData || {}
+pageData.errors = req.flash('errors') || []
   
     res.render('homepages/account/login.hbs', pageData)
 })
