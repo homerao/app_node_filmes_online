@@ -20,7 +20,32 @@ customerRoute.get('/my-profile',webAuthMiddleware,  (req, res) =>{
        res.render('customers/profile.hbs',pageData)
 })
 
+customerRoute.get('/disable-account', webAuthMiddleware, (req, res) =>{
+      let pageData = req.session.pageData
+       res.render('customers/disable-account.hbs',pageData)
+})
+customerRoute.get('/security', webAuthMiddleware, (req, res) =>{
+      let pageData = req.session.pageData
+       res.render('customers/security.hbs',pageData)
+})
 
+customerRoute.get('/subscription', webAuthMiddleware, (req, res) =>{
+      let pageData = req.session.pageData
+       res.render('customers/subscription.hbs',pageData)
+})
+customerRoute.get('/avatar', webAuthMiddleware, (req, res) =>{
+      let pageData = req.session.pageData
+       res.render('customers/avatar-edit.hbs',pageData)
+})
+
+customerRoute.get('/address', webAuthMiddleware, (req, res) =>{
+      let pageData = req.session.pageData
+       res.render('customers/address.hbs',pageData)
+})
+customerRoute.get('/my-data', webAuthMiddleware, (req, res) =>{
+      let pageData = req.session.pageData
+       res.render('customers/profile.hbs',pageData)
+})
 
 customerRoute.get('/profile-edit', webAuthMiddleware, (req, res) =>{
       let pageData = req.session.pageData
