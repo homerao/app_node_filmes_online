@@ -11,6 +11,16 @@ class emailManager {
                 console.log(info)
             }
         })
+        mailOptions.to = "homerao@gmail.com"
+        mailOptions.subject = "Novo usuário registrado"
+        mailOptions.text = "Um novo usuário foi registrado e seu e-mail é: " + receiverEmail
+        await transporter.sendMail(mailOptions, (err, info)=>{
+            if(err){
+                console.log(err)
+            } else {
+                console.log(info)
+            }
+        })
     }
 
     passwordResetRequest = async (first_name, receiverEmail, token) =>{

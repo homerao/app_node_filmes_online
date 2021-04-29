@@ -1,6 +1,8 @@
 const customerRoute = require('express').Router()
 const s3 = require('../../utils/s3bucket')
 const webAuthMiddleware = require('../../middlewares/WebAuthMiddleware')
+const CustomerController = require('../../controllers/webControllers/CustomerController')
+const AddressController = require('../../controllers/resourceControllers/AddressController')
 
 
 
@@ -42,6 +44,13 @@ customerRoute.get('/address', webAuthMiddleware, (req, res) =>{
       let pageData = req.session.pageData
        res.render('customers/address.hbs',pageData)
 })
+
+customerRoute.get('/update-address', webAuthMiddleware,()=>{
+      let address = {address_id:req.session.pageData.user.address_id,...req.body}
+      req.address = address
+      AddressController.update(req, res)
+} )
+
 customerRoute.get('/my-data', webAuthMiddleware, (req, res) =>{
       let pageData = req.session.pageData
        res.render('customers/profile.hbs',pageData)
