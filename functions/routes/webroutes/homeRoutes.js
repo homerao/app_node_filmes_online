@@ -2,7 +2,7 @@ const homeRoutes = require('express').Router()
 const jwtHelper = require('../../middlewares/jwtHelper')
 const filmes = require('../../mock-data/sample-data')
 const security = require('../../utils/security')
-const customerController = require('../../webControllers/CustomerController')
+const customerController = require('../../controllers/webControllers/CustomerController')
 
 homeRoutes.get('/index', (req, res)=>{
     

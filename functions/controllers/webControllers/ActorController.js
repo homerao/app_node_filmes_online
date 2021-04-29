@@ -1,4 +1,4 @@
-const service =  require('../services/ActorService')
+const service =  require('../../services/ActorService')
 
 class ActorController  {
     async save(req, res)  {

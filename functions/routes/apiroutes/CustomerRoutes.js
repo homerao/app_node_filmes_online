@@ -1,5 +1,5 @@
 const routes = require('express').Router()
-const customerController = require('../../resourceControllers/CustomerController')
+const customerController = require('../../controllers/resourceControllers/CustomerController')
 
 
 routes.get('/customers/id', (req, res)=>{

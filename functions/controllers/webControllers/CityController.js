@@ -1,4 +1,4 @@
-const service =  require('../services/CityService')
+const service =  require('../../services/CityService')
 
 class CityController  {
     save(req, res)  {

@@ -1,10 +1,10 @@
-const service =  require('../services/CustomerService')
-const jwtHelper = require('../middlewares/jwtHelper')
-const Security = require('../utils/security')
-const emailSender = require('../utils/emailManager')
-const addressService = require('../services/AddressService')
-const cityService = require('../services/CityService')
-const mysql = require('../database/mysql')
+const service =  require('../../services/CustomerService')
+const jwtHelper = require('../../middlewares/jwtHelper')
+const Security = require('../../utils/security')
+const emailSender = require('../../utils/emailManager')
+const addressService = require('../../services/AddressService')
+const cityService = require('../../services/CityService')
+const mysql = require('../../database/mysql')
 const fun = mysql.fn
 
 
