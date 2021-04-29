@@ -49,7 +49,8 @@ customerRoute.get('/my-data', webAuthMiddleware, (req, res) =>{
 
 customerRoute.get('/profile-edit', webAuthMiddleware, (req, res) =>{
       let pageData = req.session.pageData
-       res.render('customers/profile-edit.hbs',pageData)
+      console.log('profile edit, data'+pageData)
+       res.render('customers/profile.hbs',pageData)
 })
 
 customerRoute.get('/profile-update', webAuthMiddleware, (req, res) =>{

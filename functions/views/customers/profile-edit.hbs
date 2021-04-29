@@ -6,7 +6,7 @@
           <p class="mb-3">Preencha os dados para realizar a sua assinatura</p>
           <p class="mb-3 ">{{err}}</p>
           <form class="text-left" action="/new-customer" onsubmit="return validaFormLogin()" method="POST">
-            <div class="form-group"> <label for="nome">Seu primeiro nome</label> <input type="text" class="form-control" name="first_name" id="nome" placeholder="Johann"> </div>
+            <div class="form-group"> <label for="nome">Seu primeiro nome</label> <input type="text" value="{{customer.first_name}}" class="form-control" name="first_name" id="nome" placeholder="Johann"> </div>
             <div class="form-group"> <label for="sobrenome">Seu segundo nome</label> <input type="text" class="form-control" id="sobrenome" name="last_name" placeholder="Goethe"> </div>
             <div class="form-group"> <label for="email">Seu e-mail</label> <input type="email" class="form-control" id="email" name="email" placeholder="j.goethe@werther.com"> </div>
             <div class="form-row">
