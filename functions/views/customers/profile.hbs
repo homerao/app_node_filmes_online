@@ -16,37 +16,7 @@
             
           <hr>
 
-          <div class="mx-auto col-lg-12 py-3 my-3 ">
-           <h1>Endereço</h1>
-                <p class="mb-3 ">{{err}}</p>
-                <div class="d-flex justify-content-end">
-<button id="enable-disable-address"   style="background-color:#512DA8;"   onclick="" type="button" class="btn  d-flex  "><i class="far fa-edit"></i></button>
  
-                </div>
-          <form class="text-left" action="/web/customers/address-save" onsubmit="return validaFormLogin()" method="POST">
-     
-            <div class="form-group"> <label for="cep">CEP</label> <input type="text"   onkeydown="cepMask()" value="{{customer.nome}}" placeholder="ex: 99.999-999" maxlength="10" class="form-control" onblur="onLeave()" name="postal_code" id="cep" placeholder="Cep"> </div>
-            <div class="form-group"> <label for="endereco">Endereço</label> <input type="text" value="{{customer.nome}}"  class="form-control" name="address" id="endereco" placeholder="Endereço"> </div>
-              
-            <div class="form-row">
-              
-               <div class="form-group col-md-6"> <label for="bairro">Bairro</label> <input type="text" value="{{customer.address.nome}}" class="form-control"  id="bairro" name="district" placeholder="Bairro"> </div>
-              
-             
-                <div class="form-group col-md-6"> <label for="endereco">Numero</label> <input type="text" value="{{customer.address.address_2}}"  class="form-control" name="numero" id="numero" placeholder="Numero"> </div>
-          
-             </div>
-            
-            
-              
-            <div class="form-group"> <label for="cidade">Cidade</label> <input type="text" class="form-control" value="{{customer.city}}"  id="cidade" name="city" placeholder="Cidade"> </div>
-            <div class="form-group"> <label for="estado">Estado</label> <input type="text" class="form-control" value="{{customer.state}}"  id="estado" name="state" placeholder="Estado"> </div>
-            <div class="form-group mb-3"> <label for="telefone">Telefone</label> <input type="tel"   onblur="telefoneMask()" value="{{customer.phone}}"  maxlength="16"  class="form-control" id="telefone" name="phone"  placeholder="(xx)-xxxxx-xxxx"> </div>
-            
-           <button id="address-submit"  style="background-color:#03A9F4;"   onsubmit="enableDisableSendButton()" type="submit" class="btn  mx-auto w-50">Salvar</button>
-          </form>
-          
-          </div>
 
         </div>
 
