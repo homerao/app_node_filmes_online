@@ -119,3 +119,8 @@ async function preencheCamposDeEndereco(endereco){
 
   
 }
+
+function enableEdit(){
+  document.getElementById('nome').disabled = false
+  document.getElementById('sobrenome').disabled = false
+}

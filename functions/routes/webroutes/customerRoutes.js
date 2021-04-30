@@ -62,9 +62,8 @@ customerRoute.get('/profile-edit', webAuthMiddleware, (req, res) =>{
        res.render('customers/profile.hbs',pageData)
 })
 
-customerRoute.get('/profile-update', webAuthMiddleware, (req, res) =>{
-      let pageData = req.session.pageData
-       res.render('customers/customermenu.hbs',pageData)
+customerRoute.post('/profile-update', webAuthMiddleware, (req, res)=>{
+      CustomerController.update(req, res)
 })
 
 customerRoute.get('/avatar-edit',webAuthMiddleware, (req, res) =>{

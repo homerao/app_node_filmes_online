@@ -98,11 +98,16 @@ class WebCustomerController  {
     console.log(decoded)
     }
     async update(req, res) {
-       let  customer = req.body
+      let id = req.session.pageData.user.customer_id
+
+       let  customer = {customer_id:id, first_name:req.body.first_name, last_name: req.body.last_name}
        service.update(customer).then((data)=>{
-        return res.send(data)
+         console.log(data[1][0])
+         req.session.pageData.user = data[1][0]
+        return res.redirect('/web/customers/menu')
         }).catch((err)=>{
-          return res.send(err)
+          req.flash('erro ao atualizar o cliente '+ err)
+          return res.redirect('/web/customers/my-profile')
         })
        
     }
@@ -135,7 +140,18 @@ class WebCustomerController  {
           })
       
       }
-
+      async update(req, res){
+        let id = req.session.pageData.user.customer_id
+        let customer = {customer_id: id, first_name:req.body.first_name, last_name: req.body.last_name}
+            
+        service.update(customer).then((data)=>{
+            return res.send(data)
+            }).catch((err)=>{
+              return res.send(err)
+            })
+        
+        }
+  
 
 
     async findAll(req, res){
