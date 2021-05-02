@@ -86,7 +86,7 @@ app.use('/web', webRoutes)
 app.use('/api', apiIndex)
 
  app.listen((process.env.NODE_ENV === 'development' ? 3000: process.env.PORT), ()=>{
-    console.log("Servidor iniciado na porta" + process.env.PORT + " " + path.join(__dirname,'/public'))
+    console.log("Servidor iniciado na porta" + process.env.PORT + " " + path.join(__dirname,'/public' + "\n http://localhost:3000"))
 }) 
 
 /* app.listen(3000, ()=>{
