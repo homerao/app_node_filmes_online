@@ -97,17 +97,28 @@ class WebCustomerController  {
     let decoded = jwtHelper.decodeEmailRegistration(req.params.token)
     console.log(decoded)
     }
+    async edit(req, res){
+      let pageData = req.session.pageData
+      console.log(pageData)
+      let user = await service.findOneById(req.session.pageData.user.customer_id)
+      pageData.user = await user.toJSON()
+      console.log('profile edit, data')
+      console.log(pageData.user)
+       res.render('customers/profile.hbs',pageData)
+    }
     async update(req, res) {
       let id = req.session.pageData.user.customer_id
-
+      
        let  customer = {customer_id:id, first_name:req.body.first_name, last_name: req.body.last_name}
        service.update(customer).then((data)=>{
          console.log(data[1][0])
-         req.session.pageData.user = data[1][0]
-        return res.redirect('/web/customers/menu')
+         
+         console.log("update  profile-update")
+         console.log(data[1][0])
+         return res.redirect('/web/customers/menu')
         }).catch((err)=>{
-          req.flash('erro ao atualizar o cliente '+ err)
-          return res.redirect('/web/customers/my-profile')
+          
+          return res.redirect('/web/customers/menu')
         })
        
     }
@@ -140,7 +151,7 @@ class WebCustomerController  {
           })
       
       }
-      async update(req, res){
+/*       async update(req, res){
         let id = req.session.pageData.user.customer_id
         let customer = {customer_id: id, first_name:req.body.first_name, last_name: req.body.last_name}
             
@@ -150,7 +161,7 @@ class WebCustomerController  {
               return res.send(err)
             })
         
-        }
+        } */
   
 
 

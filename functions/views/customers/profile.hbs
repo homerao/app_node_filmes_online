@@ -10,9 +10,9 @@
  
     </div>
         <form class="text-left" action="/web/customers/profile-update" onsubmit="return validaFormLogin()" method="POST">
-            <div class="form-group"> <label for="nome">Seu primeiro nome</label> <input type="text" disabled value={{user.first_name}} class="form-control" name="first_name" id="nome" placeholder="Johann"> </div>
-            <div class="form-group"> <label for="sobrenome">Seu segundo nome</label> <input type="text" disabled class="form-control" value={{user.last_name}} id="sobrenome" name="last_name" placeholder="Goethe"> </div>
-            <div class="form-group"> <label for="email">Seu e-mail</label> <input type="email" disabled class="form-control" value={{user.email}} id="email" name="email" placeholder="j.goethe@werther.com"> </div>
+            <div class="form-group"> <label for="nome">Seu primeiro nome</label> <input type="text" disabled  value="{{{user.first_name}}}" class="form-control" name="first_name" id="nome" > </div>
+            <div class="form-group"> <label for="sobrenome">Seu segundo nome</label> <input type="text" disabled  class="form-control" value="{{user.last_name}}" id="sobrenome" name="last_name" placeholder="Goethe"> </div>
+            <div class="form-group"> <label for="email">Seu e-mail</label> <input type="email" disabled class="form-control" value="{{user.email}}" id="email" name="email" placeholder="j.goethe@werther.com"> </div>
             <button id="address-submit"  style="background-color:#03A9F4;"   onsubmit="enableDisableSendButton()" type="submit" class="btn d-flex justify-content-center  mx-auto w-50">Atualizar</button>
         </form>
 

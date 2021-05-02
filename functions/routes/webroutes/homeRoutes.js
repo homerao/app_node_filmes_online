@@ -45,9 +45,10 @@ pageData.errors = req.flash('errors') || []
 })
 
 homeRoutes.get('/logoff', (req, res)=>{
- 
+  req.session.cookie = null
   req.session.destroy()
-  
+  console.log("Sessão destruida")
+ 
     res.render('homepages/account/login.hbs')
 })
 

@@ -17,10 +17,11 @@ customerRoute.get('/my-subscription', webAuthMiddleware, (req, res) =>{
       let pageData = req.session.pageData
        res.render('customers/profile.hbs',pageData)
 })
-customerRoute.get('/my-profile',webAuthMiddleware,  (req, res) =>{
+/* customerRoute.get('/my-profile',webAuthMiddleware,  (req, res) =>{
       let pageData = req.session.pageData
+      console.log(pageData.user)
        res.render('customers/profile.hbs',pageData)
-})
+}) */
 
 customerRoute.get('/disable-account', webAuthMiddleware, (req, res) =>{
       let pageData = req.session.pageData
@@ -57,12 +58,11 @@ customerRoute.get('/my-data', webAuthMiddleware, (req, res) =>{
 })
 
 customerRoute.get('/profile-edit', webAuthMiddleware, (req, res) =>{
-      let pageData = req.session.pageData
-      console.log('profile edit, data'+pageData)
-       res.render('customers/profile.hbs',pageData)
-})
+      CustomerController.edit(req, res)
+}) 
 
 customerRoute.post('/profile-update', webAuthMiddleware, (req, res)=>{
+    
       CustomerController.update(req, res)
 })
 
