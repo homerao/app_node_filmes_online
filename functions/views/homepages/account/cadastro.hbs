@@ -37,7 +37,7 @@
             <div class="form-group"> <label for="estado">Estado</label> <input type="text" class="form-control"  id="estado" name="state" placeholder="Estado"> </div>
             <div class="form-group mb-3"> <label for="telefone">Telefone</label> <input type="tel"   onblur="telefoneMask()"  maxlength="16"  class="form-control" id="telefone" name="phone"  placeholder="(xx)-xxxxx-xxxx"> </div>
             
-            <button id="submit"    onsubmit="enableDisableSendButton()" type="submit" class="btn btn-primary w-100">Cadastrar</button>
+            <button id="submit"    onsubmit="return validate()" type="submit" class="btn btn-primary w-100">Cadastrar</button>
           </form>
         </div>
       </div>
@@ -48,4 +48,35 @@
       </div>
     </div>
     </div>
+    <script>
+      let erros = [], cidade, estado, bairro, nome, sobrenome, email, senha, redigitasenha
+      cidade = document.getElementsByName("cidade").value
+      estado = document.getElementsByName("estado").value
+      nome = document.getElementsByName("nome").value
+      sobrenome = document.getElementsByName("sobrenome").value
+      email = document.getElementsByName("email").value
+      senha = document.getElementsByName("senha").value
+      redigitasenha = document.getElementsByName("redigitasenha").value
+      
+      function validate(){
+       
+        if(cidade === ''){
+         erros.push("Campo cidade está vazio")
+        }
+        if(estado === ''){
+          erros.push("Campo estado está vazio")
+        }
+        if(nome === ''){
+          erros.push("Campo nome está vazio")
+        }
+        if(email === ''){
+          erros.push("Campo email está vazio")
+        }
+        if(erros.length > 0){
+          return false
+        } else {
+          return true
+        }
+      }
+    </script>
    
